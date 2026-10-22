@@ -1,0 +1,77 @@
+- id: c-one
+  name: Constraint c-one
+  stage: select
+  what: What c-one is [1].
+  mechanism: Why [1].
+  how_to_tell:
+  - A sign [1].
+  - Another sign (synthesis).
+  indicators:
+  - ind-one
+  levers:
+  - l-one
+  gates:
+  - g-one
+  situations:
+  - many-apply-few-qualify
+  - requires-clearance
+  decided_by: firm
+  evidence_grade: meta-analysis
+  controversy: ''
+  legacy:
+  - h-A1
+  as_of: '2026-10-21'
+  sources:
+  - 1
+  conflicts: []
+- id: c-two
+  name: Constraint c-two
+  stage: select
+  what: What c-two is [1].
+  mechanism: Why [1].
+  how_to_tell:
+  - A sign [1].
+  - Another sign (synthesis).
+  indicators:
+  - ind-one
+  levers:
+  - l-one
+  gates:
+  - g-one
+  situations:
+  - pass-then-struggle
+  decided_by: firm
+  evidence_grade: meta-analysis
+  controversy: ''
+  legacy:
+  - h-A1
+  as_of: '2026-10-21'
+  sources:
+  - 1
+  conflicts: []
+- id: c-three
+  name: Constraint c-three
+  stage: offer
+  what: What c-three is [1].
+  mechanism: Why [1].
+  how_to_tell:
+  - A sign [1].
+  - Another sign (synthesis).
+  indicators:
+  - ind-one
+  levers:
+  - l-two
+  gates:
+  - g-one
+  situations:
+  - urgent-start
+  - requires-clearance
+  decided_by: firm
+  evidence_grade: meta-analysis
+  controversy: ''
+  legacy:
+  - h-A1
+  as_of: '2026-10-21'
+  sources:
+  - 1
+  conflicts: []

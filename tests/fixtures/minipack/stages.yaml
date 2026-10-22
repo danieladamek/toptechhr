@@ -1,0 +1,135 @@
+- id: plan
+  name: Plan
+  order: 1
+  what: The plan stage [1].
+  decided_by: The firm [2].
+  failure_patterns: []
+  metrics: []
+  literatures: []
+  gates: []
+  constraints: []
+  as_of: '2026-10-21'
+  sources:
+  - 1
+  status: swept
+- id: attract
+  name: Attract
+  order: 2
+  what: The attract stage [1].
+  decided_by: The firm [2].
+  failure_patterns: []
+  metrics: []
+  literatures: []
+  gates: []
+  constraints: []
+  as_of: '2026-10-21'
+  sources:
+  - 1
+  status: swept
+- id: select
+  name: Select
+  order: 3
+  what: The select stage [1].
+  decided_by: The firm [2].
+  failure_patterns:
+  - many-apply-few-qualify
+  metrics:
+  - id: time-to-fill
+    definition: Days to fill [2].
+    benchmark:
+    - ind-one
+  literatures: []
+  gates:
+  - g-one
+  constraints:
+  - c-one
+  - c-two
+  as_of: '2026-10-21'
+  sources:
+  - 1
+  status: swept
+- id: offer
+  name: Offer
+  order: 4
+  what: The offer stage [1].
+  decided_by: The firm [2].
+  failure_patterns: []
+  metrics: []
+  literatures: []
+  gates: []
+  constraints:
+  - c-three
+  as_of: '2026-10-21'
+  sources:
+  - 1
+  status: swept
+- id: clear-start
+  name: Clear Start
+  order: 5
+  what: The clear-start stage [1].
+  decided_by: The firm [2].
+  failure_patterns: []
+  metrics: []
+  literatures: []
+  gates: []
+  constraints: []
+  as_of: '2026-10-21'
+  sources:
+  - 1
+  status: swept
+- id: onboard
+  name: Onboard
+  order: 6
+  what: The onboard stage [1].
+  decided_by: The firm [2].
+  failure_patterns: []
+  metrics: []
+  literatures: []
+  gates: []
+  constraints: []
+  as_of: '2026-10-21'
+  sources:
+  - 1
+  status: swept
+- id: develop
+  name: Develop
+  order: 7
+  what: The develop stage [1].
+  decided_by: The firm [2].
+  failure_patterns: []
+  metrics: []
+  literatures: []
+  gates: []
+  constraints: []
+  as_of: '2026-10-21'
+  sources:
+  - 1
+  status: swept
+- id: retain
+  name: Retain
+  order: 8
+  what: The retain stage [1].
+  decided_by: The firm [2].
+  failure_patterns: []
+  metrics: []
+  literatures: []
+  gates: []
+  constraints: []
+  as_of: '2026-10-21'
+  sources:
+  - 1
+  status: swept
+- id: handover
+  name: Handover
+  order: 9
+  what: The handover stage [1].
+  decided_by: The firm [2].
+  failure_patterns: []
+  metrics: []
+  literatures: []
+  gates: []
+  constraints: []
+  as_of: '2026-10-21'
+  sources:
+  - 1
+  status: swept

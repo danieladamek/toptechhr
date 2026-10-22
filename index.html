@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="TopTechHR — the HR edition of Key Personnel: four questions about an opening return a one-page plan ranked by match count and graded by evidence, the rules to check with their dates, and the numbers beside their national counterparts. The evidence is the Key Personnel content pack. Not advice; no firm; nothing leaves the browser." />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" />
+    <title>TopTechHR</title>
+    <script>
+      // Apply the persisted / system theme before first paint to avoid a flash.
+      try {
+        var t = localStorage.getItem('toptechhr-theme');
+        if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

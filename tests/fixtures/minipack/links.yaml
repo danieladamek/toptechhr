@@ -1,0 +1,39 @@
+- id: k-001
+  from: l-one
+  to: c-one
+  relation: enables
+  link: a lever eases a constraint
+  evidence: Because [1].
+  grade: meta-analysis
+  legacy: []
+  sources:
+  - 1
+- id: k-002
+  from: c-one
+  to: c-two
+  relation: amplifies
+  link: one makes two worse
+  evidence: Because [1].
+  grade: observational
+  legacy: []
+  sources:
+  - 1
+- id: k-003
+  from: l-one
+  to: c-three
+  relation: trade-off
+  link: the lever costs elsewhere
+  evidence: Because [1].
+  grade: observational
+  legacy: []
+  sources:
+  - 1
+- id: k-004
+  from: c-two
+  to: c-three
+  relation: precondition
+  link: two before three
+  evidence: Because (synthesis).
+  grade: synthesis
+  legacy: []
+  sources: []

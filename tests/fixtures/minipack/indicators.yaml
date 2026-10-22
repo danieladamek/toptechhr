@@ -1,0 +1,12 @@
+- id: ind-one
+  name: Openings rate
+  value: 5.0%
+  reference_period: August 2026
+  published: '2026-09-29'
+  publisher: BLS
+  series: JTS540099000000000JOR
+  stages:
+  - select
+  note: preliminary [2]
+  sources:
+  - 2

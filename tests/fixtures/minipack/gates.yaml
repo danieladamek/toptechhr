@@ -1,0 +1,18 @@
+- id: g-one
+  name: Gate one
+  what: A rule [2].
+  governing_text: 29 CFR 1607
+  applies_when: always [2]
+  binds:
+  - select
+  steps:
+  - Validate [2].
+  official_url: https://example.org/g
+  pending_changes:
+  - status: proposed
+    date: '2026-11-01'
+    text: A change [2].
+  as_of: '2026-10-21'
+  sources:
+  - 2
+  conflicts: []

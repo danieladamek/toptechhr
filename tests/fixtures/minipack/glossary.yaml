@@ -1,0 +1,17 @@
+- id: structured-interview
+  term: structured interview
+  kind: methods
+  domain: selection
+  variants: [structured interviews]
+  short: The same questions for every candidate.
+  definition: An interview with the same job-related questions, scored on one scale [1].
+  see: []
+  concept: mini-primer
+- id: interview
+  term: interview
+  kind: methods
+  domain: selection
+  variants: [interviews]
+  short: A conversation used to select.
+  definition: A conversation used to select [1].
+  see: [structured-interview]

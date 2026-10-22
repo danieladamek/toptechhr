@@ -1,0 +1,31 @@
+mode: topic
+slug: mini-kp
+title: 'Mini: a fixture pack for the Key Personnel content build'
+short_title: Mini
+question: What constrains a fixture opening?
+purpose: orientation
+as_of: '2026-10-22'
+authors: [Manuscript Interrogator (fixture)]
+venue: Fixture — NOT PEER REVIEWED, not advice.
+year: 2026
+plain_abstract: A fixture.
+reading_minutes: 1
+audience: tests
+palette:
+  groups: {plan: '#4a4a4a', attract: '#1f7a63', select: '#2a5aa6', offer: '#a85a1f', clear-start: '#7b2c5e', onboard: '#1f6f8b', develop: '#3b7a2a', retain: '#8a6d00', handover: '#6b4e9b', gate: '#8a6d00', lever: '#2a5aa6'}
+permissions:
+  text: no third-party text reproduced beyond quotations of 25 words or fewer
+  figures: synthesised by the builder
+delivery: pages
+notes_storage: browser
+concept_self_checks: false
+builder: {name: Manuscript Interrogator, version: '0.10', date: '2026-10-22'}
+github_account: danieladamek
+extensions:
+  record_files: [stages.yaml, patterns.yaml, constraints.yaml, levers.yaml, gates.yaml, enablers.yaml, indicators.yaml, links.yaml, states.yaml, controversies.yaml, changes.yaml, hypotheses.yaml, queries.yaml]
+  schema: EXTENSIONS.md
+  pathfinder: pathfinder.yaml
+  stages: {plan: Plan, attract: Attract, select: Select, offer: Offer, clear-start: Clear and start, onboard: Onboard, develop: Develop, retain: Retain, handover: Hand over}
+  graph: {file: links.yaml, relations: [precondition, amplifies, trade-off, enables]}
+  refresh: {bls_api: indicators with a series are refreshed from the BLS Public Data API v1}
+disclaimer: Not legal, HR, compliance or financial advice.

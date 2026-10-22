@@ -1,0 +1,16 @@
+- id: cv-one
+  name: Does it work?
+  question: Does it?
+  positions:
+  - holder: A
+    claim: yes [1]
+    sources:
+    - 1
+  - holder: B
+    claim: no [2]
+    sources:
+    - 2
+  what_a_recruiter_can_rely_on: Both hold in part [1].
+  sources:
+  - 1
+  - 2

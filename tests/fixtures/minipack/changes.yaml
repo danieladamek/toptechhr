@@ -1,0 +1,22 @@
+- id: ch-001
+  date: '2026-01-01'
+  status: final
+  title: A rule
+  what: It changed [2].
+  stages:
+  - select
+  records:
+  - g-one
+  sources:
+  - 2
+- id: ch-002
+  date: '2026-06-30'
+  status: pending-implementation
+  title: An old date
+  what: 'It moved [2]. Superseded: replaced before it took effect (ch-001).'
+  stages:
+  - select
+  records:
+  - g-one
+  sources:
+  - 2

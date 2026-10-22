@@ -1,0 +1,310 @@
+{
+ "nodes": [
+  {
+   "id": "plan",
+   "label": "Plan",
+   "type": "stage",
+   "col": 0,
+   "row": 1,
+   "stage": "plan"
+  },
+  {
+   "id": "attract",
+   "label": "Attract",
+   "type": "stage",
+   "col": 1,
+   "row": 1,
+   "stage": "attract"
+  },
+  {
+   "id": "select",
+   "label": "Select",
+   "type": "stage",
+   "col": 2,
+   "row": 1,
+   "stage": "select"
+  },
+  {
+   "id": "offer",
+   "label": "Offer",
+   "type": "stage",
+   "col": 3,
+   "row": 1,
+   "stage": "offer"
+  },
+  {
+   "id": "clear-start",
+   "label": "Clear and start",
+   "type": "stage",
+   "col": 4,
+   "row": 1,
+   "stage": "clear-start"
+  },
+  {
+   "id": "onboard",
+   "label": "Onboard",
+   "type": "stage",
+   "col": 5,
+   "row": 1,
+   "stage": "onboard"
+  },
+  {
+   "id": "develop",
+   "label": "Develop",
+   "type": "stage",
+   "col": 6,
+   "row": 1,
+   "stage": "develop"
+  },
+  {
+   "id": "retain",
+   "label": "Retain",
+   "type": "stage",
+   "col": 7,
+   "row": 1,
+   "stage": "retain"
+  },
+  {
+   "id": "handover",
+   "label": "Hand over",
+   "type": "stage",
+   "col": 8,
+   "row": 1,
+   "stage": "handover"
+  },
+  {
+   "id": "g-contract",
+   "label": "Contract and customer: labor category, key personnel, rate ceiling, approval",
+   "type": "gate-group",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "id": "g-law",
+   "label": "Law: Uniform Guidelines, EEO, Fair Chance, state overlays",
+   "type": "gate-group",
+   "col": 2,
+   "row": 2
+  },
+  {
+   "id": "g-clearance",
+   "label": "Government: eligibility, sponsorship, reciprocity, continuous vetting",
+   "type": "gate-group",
+   "col": 5,
+   "row": 0
+  },
+  {
+   "id": "g-retention",
+   "label": "Law: repayment and noncompete limits, no-poach, WARN, transition rules",
+   "type": "gate-group",
+   "col": 6,
+   "row": 2
+  },
+  {
+   "id": "p-many",
+   "label": "Many apply, few qualify",
+   "type": "pattern",
+   "col": 1,
+   "row": 3,
+   "pattern": "many-apply-few-qualify"
+  },
+  {
+   "id": "p-few",
+   "label": "Few plausible candidates",
+   "type": "pattern",
+   "col": 0,
+   "row": 3,
+   "pattern": "few-plausible-candidates"
+  },
+  {
+   "id": "p-withdraw",
+   "label": "Withdraw mid-process",
+   "type": "pattern",
+   "col": 2,
+   "row": 3,
+   "pattern": "withdraw-mid-process"
+  },
+  {
+   "id": "p-decline",
+   "label": "Pass, then decline",
+   "type": "pattern",
+   "col": 3,
+   "row": 3,
+   "pattern": "pass-then-decline"
+  },
+  {
+   "id": "p-cannot-start",
+   "label": "Accept, cannot start",
+   "type": "pattern",
+   "col": 4,
+   "row": 3,
+   "pattern": "accept-cannot-start"
+  },
+  {
+   "id": "p-struggle",
+   "label": "Start, then struggle",
+   "type": "pattern",
+   "col": 5,
+   "row": 3,
+   "pattern": "start-then-struggle"
+  },
+  {
+   "id": "p-leave",
+   "label": "Productive employees leave",
+   "type": "pattern",
+   "col": 7,
+   "row": 3,
+   "pattern": "productive-employees-leave"
+  },
+  {
+   "id": "p-rejects",
+   "label": "The customer rejects",
+   "type": "pattern",
+   "col": 0,
+   "row": 0,
+   "pattern": "customer-rejects"
+  }
+ ],
+ "edges": [
+  {
+   "from": "plan",
+   "to": "attract",
+   "type": "sequence"
+  },
+  {
+   "from": "attract",
+   "to": "select",
+   "type": "sequence"
+  },
+  {
+   "from": "select",
+   "to": "offer",
+   "type": "sequence"
+  },
+  {
+   "from": "offer",
+   "to": "clear-start",
+   "type": "sequence"
+  },
+  {
+   "from": "clear-start",
+   "to": "onboard",
+   "type": "sequence"
+  },
+  {
+   "from": "onboard",
+   "to": "develop",
+   "type": "sequence"
+  },
+  {
+   "from": "develop",
+   "to": "retain",
+   "type": "sequence"
+  },
+  {
+   "from": "retain",
+   "to": "handover",
+   "type": "sequence"
+  },
+  {
+   "from": "g-contract",
+   "to": "plan",
+   "type": "binds"
+  },
+  {
+   "from": "g-contract",
+   "to": "offer",
+   "type": "binds"
+  },
+  {
+   "from": "g-contract",
+   "to": "onboard",
+   "type": "binds"
+  },
+  {
+   "from": "g-law",
+   "to": "attract",
+   "type": "binds"
+  },
+  {
+   "from": "g-law",
+   "to": "select",
+   "type": "binds"
+  },
+  {
+   "from": "g-law",
+   "to": "offer",
+   "type": "binds"
+  },
+  {
+   "from": "g-clearance",
+   "to": "clear-start",
+   "type": "binds"
+  },
+  {
+   "from": "g-clearance",
+   "to": "retain",
+   "type": "binds"
+  },
+  {
+   "from": "g-clearance",
+   "to": "handover",
+   "type": "binds"
+  },
+  {
+   "from": "g-retention",
+   "to": "develop",
+   "type": "binds"
+  },
+  {
+   "from": "g-retention",
+   "to": "retain",
+   "type": "binds"
+  },
+  {
+   "from": "g-retention",
+   "to": "handover",
+   "type": "binds"
+  },
+  {
+   "from": "p-many",
+   "to": "attract",
+   "type": "observed-at"
+  },
+  {
+   "from": "p-few",
+   "to": "attract",
+   "type": "observed-at"
+  },
+  {
+   "from": "p-withdraw",
+   "to": "select",
+   "type": "observed-at"
+  },
+  {
+   "from": "p-decline",
+   "to": "offer",
+   "type": "observed-at"
+  },
+  {
+   "from": "p-cannot-start",
+   "to": "clear-start",
+   "type": "observed-at"
+  },
+  {
+   "from": "p-struggle",
+   "to": "onboard",
+   "type": "observed-at"
+  },
+  {
+   "from": "p-leave",
+   "to": "retain",
+   "type": "observed-at"
+  },
+  {
+   "from": "p-rejects",
+   "to": "plan",
+   "type": "observed-at"
+  }
+ ]
+}

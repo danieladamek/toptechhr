@@ -1,0 +1,51 @@
+- n: 1
+  key: Study2022
+  tier: seminal
+  citation: 'Author, A. (2022). A meta-analysis of interviews. Journal of Tests.'
+  url: https://example.org/1
+  journal: Journal of Tests
+  year: 2022
+  published: '2022'
+  accessed: '2026-10-21'
+  publisher: Test Press
+  source_kind: primary
+  peer_reviewed: true
+  study_design: meta-analysis
+  population: 'k = 3 studies'
+  effect: 'r = .42'
+  read: full
+  summary: A summary of what the study found.
+  why_it_mattered: The standard.
+  key_facts: ['r = .42']
+  quotes: []
+  role_here: support
+  role_note: ''
+  cited_in: [s1]
+  used_by: [constraints/c-one]
+  verified: true
+  recheck: true
+- n: 2
+  key: Rule2024
+  tier: current
+  citation: 'Agency. 29 CFR 1607 (2024).'
+  url: https://example.org/2
+  journal: ''
+  year: 2024
+  published: '2024'
+  accessed: '2026-10-21'
+  publisher: Agency
+  source_kind: primary
+  peer_reviewed: false
+  study_design: regulation
+  population: ''
+  effect: ''
+  read: full
+  summary: The rule.
+  key_facts: []
+  quotes: []
+  role_here: data-source
+  role_note: ''
+  cited_in: []
+  used_by: []
+  verified: true
+  recheck: true

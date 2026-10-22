@@ -1,0 +1,23 @@
+topic: fixture
+question: What constrains a fixture opening?
+purpose: practice-guide
+boundary: {in: [selection], out: [payroll], rationale: fixture}
+level: the opening
+time_window: {current_from: 2021, seminal: unlimited}
+stance: evidence-graded
+depth: standard
+anchors: [{citation: 'Author (2022), Journal of Tests', why: fixture, proposed_by: builder}]
+excluded: []
+assumed: false
+assumptions: []
+interview: [{q: What?, answer: This., asked: '2026-10-21'}]
+evidence_grades: {meta-analysis: pooled studies, regulation: binds}
+search_strategy:
+  run_on: '2026-10-21'
+  sources: [WebSearch]
+  queries: [{q: structured interview validity, source: WebSearch, hits: 10, slice: '1'}]
+  snowball: []
+  inclusion: [studies]
+  exclusion: [blogs]
+  known_gaps: [none]
+corpus_profile: {by_tier: {seminal: 1, current: 1}, concentration: two sources, dissent_represented: false, dissent_note: ''}

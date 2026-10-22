@@ -1,0 +1,14 @@
+- id: fig-a
+  label: Figure 1
+  title: A fixture chart
+  kind: chart
+  synthesis: data
+  refs: [1]
+  chart: {type: bar, x: {field: method, label: Method}, y: {field: value, label: Value}}
+  data: figures/data/fig-a.csv
+  caption: Validities [1].
+  how_to_read: Bars.
+  explain: []
+  concepts: [mini-primer]
+  discussed_in: [s1]
+  source: The study [1].

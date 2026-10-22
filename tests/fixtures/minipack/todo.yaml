@@ -1,0 +1,7 @@
+- id: t-1
+  kind: gap
+  about: gates/g-one
+  text: A gap.
+  owner: author
+  where: gates/g-one
+  what: find the statute

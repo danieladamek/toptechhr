@@ -1,0 +1,31 @@
+version: '1.0'
+as_of: '2026-10-22'
+adjudicated_counts:
+  supported: 1
+  reframed: 1
+entries:
+- id: h-A1
+  kind: row
+  original_id: A1
+  original:
+    challenge: Too few qualified people
+  status: supported
+  stage_guess: attract
+  mapped_to:
+  - c-one
+  evidence: It holds [1].
+  queries: []
+  adjudicated: '2026-10-21'
+  sweep: 1
+- id: h-cat-A
+  kind: category
+  original_id: A
+  original: Supply
+  status: reframed
+  stage_guess: attract
+  mapped_to:
+  - attract
+  evidence: Became a stage [1].
+  queries: []
+  adjudicated: '2026-10-21'
+  sweep: 1

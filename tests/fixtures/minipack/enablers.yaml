@@ -1,0 +1,13 @@
+- id: e-one
+  name: Enabler one
+  kind: reference
+  what: A guide [2].
+  cost: free [2]
+  conditions: none [2]
+  levers:
+  - l-one
+  official_url: https://example.org/e
+  pending_changes: []
+  as_of: '2026-10-21'
+  sources:
+  - 2

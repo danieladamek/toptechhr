@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * TopTechHR brand (KICKOFF §4e). The `bx-` component names are kept from the Manuscript Interrogator family so the
+ * ported reader, fold-outs and record parts work unchanged; every value is TopTechHR's own.
+ * Contrast: text never sits on #2A7FBF (4.3:1 on white); filled surfaces with text use #1F6FA8 (5.4:1).
+ */
+@layer base {
+  :root {
+    color-scheme: light;
+    --bx-bg: #EEF3FA;
+    --bx-bg-2: #E3EEF8;
+    --bx-surface: #FFFFFF;
+    --bx-ink: #1F2A44;
+    --bx-body: #4A5568;
+    --bx-muted: #4A5568;
+    --bx-line: #D9E4F0;
+    --bx-accent: #2A7FBF;
+    --bx-fill: #1F6FA8;
+    --bx-link: #1F6FA8;
+    --bx-amber: #B45309;
+    --bx-amber-bg: #FEF3C7;
+    --bx-grade-bg: #E3EEF8;
+  }
+  .dark {
+    color-scheme: dark;
+    --bx-bg: #141A2B;
+    --bx-bg-2: #222B45;
+    --bx-surface: #1B2238;
+    --bx-ink: #D7DEEA;
+    --bx-body: #D7DEEA;
+    --bx-muted: #A9B4C8;
+    --bx-line: #2E3A57;
+    --bx-accent: #2A7FBF;
+    --bx-fill: #1F6FA8;
+    --bx-link: #7FB8E6;
+    --bx-amber: #FCD34D;
+    --bx-amber-bg: #3A2A0A;
+    --bx-grade-bg: #26324F;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--bx-bg); color: var(--bx-body); @apply font-body text-[18px] leading-[1.6]; }
+  h1, h2, h3, h4 { @apply font-display tracking-tight; color: var(--bx-ink); }
+  h1 { @apply font-extrabold; }
+  h2, h3 { @apply font-bold; }
+  :focus-visible { outline: 3px solid var(--bx-accent); outline-offset: 2px; border-radius: 2px; }
+  a { text-underline-offset: 2px; color: var(--bx-link); }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+  sub, sup { line-height: 0; }
+}
+
+@layer components {
+  /* surfaces: white cards, soft shadow, no hard borders */
+  .bx-card        { @apply rounded-[15px] shadow-card; background: var(--bx-surface); }
+  .tt-section     { @apply mt-12 sm:mt-16; }
+  .tt-eyebrow     { @apply font-display text-[12px] font-bold uppercase tracking-[0.14em]; color: var(--bx-muted); }
+
+  /* buttons: one solid primary per view, a plain-text secondary beside it */
+  .bx-btn         { @apply inline-flex items-center gap-1.5 rounded-[10px] px-3 py-1.5 font-display text-[13px] font-semibold uppercase tracking-[0.12em] disabled:opacity-40 disabled:cursor-not-allowed; color: var(--bx-ink); background: var(--bx-surface); border: 1px solid var(--bx-line); }
+  .bx-btn:hover   { background: var(--bx-bg-2); }
+  .bx-btn-primary { @apply inline-flex items-center gap-1.5 rounded-[10px] px-5 py-2.5 font-display text-[14px] font-bold uppercase tracking-[0.12em] text-white hover:opacity-95; background: var(--bx-fill); }
+  .bx-btn-text    { @apply inline-flex items-center gap-1 font-display text-[13px] font-semibold uppercase tracking-[0.12em] underline-offset-4 hover:underline; color: var(--bx-link); }
+  .bx-btn-on      { @apply !text-white; background: var(--bx-fill) !important; border-color: var(--bx-fill) !important; }
+  .bx-input       { @apply w-full rounded-[10px] px-3 py-2 text-[16px]; background: var(--bx-surface); border: 1px solid var(--bx-line); color: var(--bx-ink); }
+  .bx-chip        { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[13px] font-semibold leading-5; }
+  .bx-prose       { @apply text-[16px] leading-7; color: var(--bx-body); }
+  .bx-kbd         { @apply rounded px-1 font-mono text-[11px]; border: 1px solid var(--bx-line); }
+  .bx-muted       { color: var(--bx-muted); }
+  .bx-term        { @apply underline decoration-dotted underline-offset-[3px] cursor-help rounded-sm; text-decoration-color: var(--bx-accent); }
+  .bx-term:hover  { background: var(--bx-bg-2); }
+  .bx-cite        { @apply align-super text-[11px] font-semibold hover:underline cursor-pointer; color: var(--bx-link); }
+  .bx-foldout     { @apply bx-card mt-2 mb-4 p-4 text-[16px] border-l-4; border-left-color: var(--bx-accent); }
+  /* amber: missing, pending, compilation-sourced, and the "Check" and "Does not:" labels (KICKOFF §4e) */
+  .bx-todo        { @apply bx-chip; color: var(--bx-amber); background: var(--bx-amber-bg); }
+  .tt-amber       { @apply bx-chip; color: var(--bx-amber); background: var(--bx-amber-bg); }
+  .tt-check       { @apply bx-chip font-display uppercase tracking-[0.12em] text-[11px]; color: var(--bx-amber); background: var(--bx-amber-bg); }
+  .tt-doesnot     { @apply font-display text-[12px] font-bold uppercase tracking-[0.12em]; color: var(--bx-amber); }
+  /* evidence grades: navy on pale blue, never a traffic light */
+  .tt-grade       { @apply bx-chip; color: var(--bx-ink); background: var(--bx-grade-bg); }
+  .tt-deco        { @apply bx-chip; color: #1F2A44; background: #3B9EDB; }
+  .tt-badge       { @apply inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-display text-[15px] font-extrabold text-white; background: var(--bx-fill); }
+  .bx-reader      { @apply max-w-[68ch] text-[18px] leading-[1.6] font-body; }
+  .bx-synthesis   { @apply border-l-2 pl-4 my-4; border-color: var(--bx-line); }
+  .bx-synthesis-label { @apply block mb-1 text-[11px] uppercase tracking-wider font-semibold; color: var(--bx-muted); }
+  .bx-syn         { @apply underline decoration-1 underline-offset-[5px] scroll-mt-24; text-decoration-style: dashed; text-decoration-color: var(--bx-muted); }
+  .bx-syn-label   { @apply ml-1 align-[0.15em] text-[10px] uppercase tracking-wider font-semibold no-underline inline-block; text-decoration: none; color: var(--bx-muted); }
+  .bx-asof        { @apply bx-chip; background: var(--bx-bg-2); color: var(--bx-muted); }
+  .bx-tier        { @apply bx-chip; border: 1px solid var(--bx-line); color: var(--bx-muted); }
+  .tt-grade.bx-tier { border: 0; color: var(--bx-ink); }
+  .bx-banner      { @apply bx-card p-4 mb-6 text-[16px] border-l-4; border-left-color: var(--bx-accent); }
+  .bx-status      { @apply bx-chip; border: 1px solid var(--bx-line); color: var(--bx-muted); }
+  .sr-only-focusable:not(:focus) { @apply sr-only; }
+  .tt-nav-link    { @apply font-display text-[13px] font-bold uppercase tracking-[0.14em] px-1 py-2 border-b-[3px] border-transparent; color: var(--bx-ink); }
+  .tt-nav-link.active { border-bottom-color: var(--bx-accent); }
+  .tt-tab         { @apply font-display text-[12px] font-bold uppercase tracking-[0.12em] px-3 py-2 border-b-[3px] border-transparent whitespace-nowrap; color: var(--bx-ink); }
+  .tt-tab[aria-selected='true'], .tt-tab.active { border-bottom-color: var(--bx-accent); }
+  .tt-strike      { @apply line-through; }
+}
+
+/* Reader typography (the commissioned guide, rendered as written) */
+.bx-reader p { @apply my-4; }
+.bx-reader blockquote { @apply border-l-4 pl-4 my-4; border-color: var(--bx-line); }
+.bx-reader strong { @apply font-semibold; color: var(--bx-ink); }
+.bx-reader table { @apply text-[15px] my-4 w-full; }
+.bx-reader th, .bx-reader td { @apply px-2 py-1 align-top; border: 1px solid var(--bx-line); }
+.bx-reader button.bx-term { font: inherit; color: inherit; text-align: inherit; }
+.bx-reader sup { font-size: 0.7em; }
+
+/* primers */
+.bx-101 h2 { @apply text-2xl mt-8; }
+.bx-101 h3 { @apply text-xl mt-6; }
+.bx-101 p { @apply my-3; }
+.bx-101 ul { @apply list-disc pl-5 my-3; }
+.bx-101 ol { @apply list-decimal pl-5 my-3; }
+.bx-101 li { @apply my-1; }
+.bx-101 .katex-display { @apply overflow-x-auto py-2; }
+.bx-101 table { @apply text-sm my-4; }
+.bx-101 th, .bx-101 td { @apply px-2 py-1 align-top; border: 1px solid var(--bx-line); }
+.bx-101 code { @apply font-mono text-[0.9em] rounded px-1; background: var(--bx-bg-2); }
+
+/* record prose: pack strings rendered as written, 16 px in dense cards */
+.bx-rec-prose { @apply text-[16px]; }
+.bx-rec-prose p { @apply my-0.5 leading-[1.6]; }
+.bx-rec-prose ul { @apply list-disc pl-5; }
+.bx-rec-prose button.bx-term { font: inherit; color: inherit; text-align: inherit; }
+.bx-table { @apply text-[15px] border-collapse w-full; }
+.bx-table th { @apply text-left font-display text-[12px] uppercase tracking-[0.1em] font-bold px-2 py-2 align-bottom; color: var(--bx-ink); border-bottom: 1px solid var(--bx-line); }
+.bx-table td { @apply px-2 py-2 align-top; border-bottom: 1px solid var(--bx-line); }
+.tt-tablebox { @apply relative overflow-x-auto rounded-[12px]; }
+
+/* the Notebook editor (TipTap) */
+.tt-editor .ProseMirror { @apply min-h-[16rem] outline-none text-[16px] leading-[1.6]; color: var(--bx-body); }
+.tt-editor .ProseMirror:focus-visible { outline: 3px solid var(--bx-accent); outline-offset: 4px; }
+.tt-editor .ProseMirror h1 { @apply text-2xl mt-4 mb-2; }
+.tt-editor .ProseMirror h2 { @apply text-xl mt-6 mb-2; }
+.tt-editor .ProseMirror h3 { @apply text-lg mt-4 mb-1; }
+.tt-editor .ProseMirror p { @apply my-2; }
+.tt-editor .ProseMirror ul { @apply list-disc pl-6 my-2; }
+.tt-editor .ProseMirror ol { @apply list-decimal pl-6 my-2; }
+.tt-editor .ProseMirror ul[data-type='taskList'] { @apply list-none pl-1; }
+.tt-editor .ProseMirror ul[data-type='taskList'] li { @apply flex gap-2 items-start; }
+.tt-editor .ProseMirror blockquote { @apply border-l-4 pl-3 my-2; border-color: var(--bx-line); }
+.tt-editor .ProseMirror a { @apply underline; }
+.tt-editor .ProseMirror p.is-editor-empty:first-child::before,
+.tt-editor .ProseMirror .is-empty::before { content: attr(data-placeholder); display: block; float: none !important; height: auto !important; pointer-events: none; color: var(--bx-muted); font-style: italic; }
+/* the template's placeholders are a sentence long: shown as a block so they wrap without overlapping the next heading */
+.tt-quote { @apply my-3 rounded-[12px] p-3 border-l-4; background: var(--bx-bg-2); border-color: var(--bx-accent); }
+.tt-quote blockquote { @apply m-0 italic; color: var(--bx-ink); }
+.tt-quote figcaption, .tt-quote .tt-quote-source { @apply mt-1 text-[13px] not-italic; color: var(--bx-muted); }
+.tt-row { @apply my-3 rounded-[12px] p-3; border: 1px solid var(--bx-line); background: var(--bx-surface); }
+.tt-placeholder { @apply rounded px-1 font-mono text-[13px]; color: var(--bx-amber); background: var(--bx-amber-bg); }
+
+/* the floating Quote control */
+.tt-quote-control { @apply fixed z-[70] flex gap-1 rounded-[10px] p-1 shadow-card; background: var(--bx-ink); }
+.tt-quote-control button { @apply rounded-[8px] px-2.5 py-1 font-display text-[12px] font-bold uppercase tracking-[0.1em] text-white; background: var(--bx-fill); }
+.dark .tt-quote-control { background: #0B0F1A; }
+
+/* Print: the Plan and the notebook print view print clean */
+@media print {
+  @page { margin: 18mm 16mm; }
+  body { background: #fff !important; color: #111 !important; font-size: 11pt; }
+  header, footer, nav, .no-print, .tt-notebook-dock, .tt-quote-control { display: none !important; }
+  main { display: block !important; }
+  .bx-card { box-shadow: none !important; border: 1px solid #ccc; break-inside: avoid; }
+  .bx-reader { max-width: none; font-size: 11pt; line-height: 1.5; }
+  .bx-term { text-decoration: none; }
+  .bx-foldout { display: none; }
+  a[href]::after { content: none; }
+  .print-only { display: block !important; }
+}
+.print-only { display: none; }

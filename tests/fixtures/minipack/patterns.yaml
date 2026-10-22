@@ -1,0 +1,24 @@
+- id: many-apply-few-qualify
+  name: Many apply, few qualify
+  stage: select
+  what: Many apply [1].
+  points_at:
+  - c-one
+  - c-two
+  reasons:
+  - constraint: c-one
+    why: the screen is weak [1]
+  legacy:
+  - h-A1
+  sources:
+  - 1
+- id: pass-then-struggle
+  name: Start, then struggle
+  stage: select
+  what: They struggle [1].
+  points_at:
+  - c-two
+  reasons: []
+  legacy: []
+  sources:
+  - 1

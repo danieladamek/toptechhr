@@ -1,0 +1,75 @@
+version: '0.1'
+as_of: '2026-10-22'
+rule: 'deterministic: score = 3 + 2 + 1; no constraint or lever is ever recommended
+  over another, only ranked by match count'
+questions:
+- id: pattern
+  prompt: What is happening?
+  type: single
+  options:
+  - tag: many-apply-few-qualify
+    label: Many applicants, few who qualify
+  - tag: start-then-struggle
+    label: Employees start but struggle
+- id: stage
+  prompt: Which stage?
+  type: single
+  options:
+  - tag: plan
+    label: plan
+  - tag: attract
+    label: attract
+  - tag: select
+    label: select
+  - tag: offer
+    label: offer
+  - tag: clear-start
+    label: clear-start
+  - tag: onboard
+    label: onboard
+  - tag: develop
+    label: develop
+  - tag: retain
+    label: retain
+  - tag: handover
+    label: handover
+  - tag: null
+    label: Not sure
+- id: conditions
+  prompt: Which conditions?
+  type: multi
+  options:
+  - tag: requires-clearance
+    label: Clearance
+  - tag: urgent-start
+    label: Urgent start
+- id: state
+  prompt: Which state?
+  type: single
+  options:
+  - tag: us-wa
+    label: Washington
+  - tag: null
+    label: Not sure
+pattern_aliases:
+  pass-then-struggle: start-then-struggle
+constraints:
+- id: c-one
+  stage: select
+  patterns:
+  - many-apply-few-qualify
+  conditions:
+  - requires-clearance
+- id: c-two
+  stage: select
+  patterns:
+  - many-apply-few-qualify
+  - start-then-struggle
+  conditions: []
+- id: c-three
+  stage: offer
+  patterns: []
+  conditions:
+  - requires-clearance
+  - urgent-start
+note: Answers stay in the browser.

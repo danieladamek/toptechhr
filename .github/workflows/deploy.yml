@@ -1,0 +1,107 @@
+name: Build, test and deploy TopTechHR
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '23 10 * * 1' # weekly: re-refresh the BLS series and redeploy
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # The weekly schedule only re-refreshes and redeploys; pushes and manual runs run the browser suite first.
+  e2e:
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: true
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: pip install pyyaml
+      - run: npm ci
+      - run: python3 tools/validate_hr_layer.py hr-layer pack/key-personnel/content-pack
+      - run: npm test
+      # exit 2 (missing pack, HR layer invalid) fails the job; exit 1 (pack content errors, listed on /library/methods
+      # exactly as the evidence edition lists them) is annotated and the build goes on
+      - name: Build content
+        run: |
+          set +e; npm run build:content; code=$?; set -e
+          if [ $code -eq 1 ]; then echo "::error title=Pack content errors::the pinned pack carries content errors — see BUILD-ERRORS.md and /library/methods"; elif [ $code -ne 0 ]; then exit $code; fi
+      # e2e runs against a fixture BLS file, never the live API
+      - name: Use the fixture BLS file
+        run: mkdir -p public/data/benchmarks && cp tests/fixtures/benchmarks/latest.json public/data/benchmarks/latest.json
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+
+  deploy:
+    needs: e2e
+    if: always() && (needs.e2e.result == 'success' || needs.e2e.result == 'skipped')
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: true
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: pip install pyyaml
+      - run: npm ci
+      - run: python3 tools/validate_hr_layer.py hr-layer pack/key-personnel/content-pack
+      - run: npm test
+      - name: Build content
+        run: |
+          set +e; npm run build:content; code=$?; set -e
+          if [ $code -eq 1 ]; then echo "::error title=Pack content errors::the pinned pack carries content errors — see BUILD-ERRORS.md and /library/methods"; elif [ $code -ne 0 ]; then exit $code; fi
+      # a failed series must not block the deploy: refresh-bls writes every series' result (failures included) before
+      # exiting non-zero; the Numbers page shows the pack value alone for a failed series and /about lists it. Never committed.
+      - name: Refresh BLS series
+        run: npm run refresh:bls || echo "::warning title=BLS refresh::at least one series failed — see public/data/benchmarks/latest.json"
+      - name: BLS refresh summary
+        if: always()
+        run: |
+          if [ -f public/data/benchmarks/latest.json ]; then
+            { echo "## BLS refresh"; echo '```json'; cat public/data/benchmarks/latest.json; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Build
+        run: npm run build
+        env:
+          BASE_PATH: /toptechhr/
+      - name: SPA fallback
+        run: cp dist/index.html dist/404.html
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v5

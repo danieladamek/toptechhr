@@ -1,0 +1,10 @@
+category,original_category,reframed_to,rows,supported,partly_supported,unstudied,ref
+A,Talent supply and candidate reach,attract,8,3,4,1,60
+B,Role definition and customer acceptance,plan (definition),7,1,5,1,197
+C,Clearance access and readiness to start,clear-start,6,3,3,0,119
+D,Compensation and contract economics,offer and plan (economics),7,4,3,0,98
+E,Candidate evaluation and hiring execution,select; offer; plan,8,2,4,2,1
+F,Developing talent and recovering investment,onboard and develop,8,2,6,0,152
+G,Retention and the employee experience,retain,8,1,7,0,178
+H,Workforce planning and structural constraints,plan (economics and planning),8,4,4,0,205
+Patterns,The seven observed failure points,eight pattern records,7,0,7,0,144

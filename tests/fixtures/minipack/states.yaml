@@ -1,0 +1,79 @@
+- id: us-wa
+  state: Washington
+  abbr: WA
+  pay_transparency:
+    status: posting
+    text: As listed [2].
+    sources:
+    - 2
+    primary_pending: true
+    gates:
+    - g-one
+  salary_history_ban:
+    status: statewide
+    text: As listed [2].
+    sources:
+    - 2
+    primary_pending: true
+    gates:
+    - g-one
+  noncompete:
+    status: void-from-2027
+    text: As listed [2].
+    sources:
+    - 2
+    primary_pending: false
+    gates:
+    - g-one
+  stay_or_pay:
+    status: statewide
+    text: As listed [2].
+    sources:
+    - 2
+    primary_pending: false
+    gates:
+    - g-one
+  ai_hiring:
+    status: none-found
+    text: As listed [2].
+    sources:
+    - 2
+    primary_pending: true
+    gates:
+    - g-one
+  cannabis_testing:
+    status: statewide
+    text: As listed [2].
+    sources:
+    - 2
+    primary_pending: true
+    gates:
+    - g-one
+  ban_the_box:
+    status: private
+    text: As listed [2].
+    sources:
+    - 2
+    primary_pending: true
+    gates:
+    - g-one
+  credit_check:
+    status: statewide
+    text: As listed [2].
+    sources:
+    - 2
+    primary_pending: true
+    gates:
+    - g-one
+  mini_warn:
+    status: statewide
+    text: As listed [2].
+    sources:
+    - 2
+    primary_pending: false
+    gates:
+    - g-one
+  sources:
+  - 2
+  as_of: '2026-10-22'
+  recheck: true

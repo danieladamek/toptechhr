@@ -1,0 +1,64 @@
+name: Update the Key Personnel pack
+
+on:
+  schedule:
+    - cron: '41 9 * * 2' # weekly
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: true
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: pip install pyyaml
+      - run: npm ci
+      # moves the submodule to the newest pack-* tag, rewrites packTag, reruns build:content and the HR validator;
+      # a failure is recorded and the pull request still opens, so it shows red instead of hiding the new pack
+      - id: update
+        run: |
+          set +e; npm run update:pack; code=$?; set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+      - id: sweep
+        if: steps.update.outputs.moved != ''
+        run: |
+          {
+            echo 'body<<PACK_EOF'
+            echo "Moves \`pack/key-personnel\` to \`${{ steps.update.outputs.moved }}\` and rebuilds \`src/data/\`."
+            echo
+            echo "**From the pack's README:**"
+            echo
+            node -e "const fs=require('fs');const t=fs.readFileSync('pack/key-personnel/content-pack/README.md','utf8');const m=[...t.matchAll(/^## (What sweep (\d+) found[^\n]*)\n([\s\S]*?)(?=^## |(?![\s\S]))/gm)].sort((a,b)=>b[2]-a[2])[0];console.log(m?('### '+m[1]+'\n\n'+m[3].trim()):'(no sweep paragraph found)')"
+            echo
+            if [ "${{ steps.update.outputs.code }}" != "0" ]; then echo "> The new pack does not build cleanly (update:pack exit ${{ steps.update.outputs.code }}): see the workflow log and BUILD-ERRORS.md."; fi
+            echo PACK_EOF
+          } >> "$GITHUB_OUTPUT"
+      - if: steps.update.outputs.moved != ''
+        uses: peter-evans/create-pull-request@v8
+        with:
+          title: 'Pack: ${{ steps.update.outputs.moved }}'
+          branch: pack/${{ steps.update.outputs.moved }}
+          commit-message: 'Pack: ${{ steps.update.outputs.moved }}'
+          body: ${{ steps.sweep.outputs.body }}
+          add-paths: |
+            pack/key-personnel
+            package.json
+            src/data
+            public/provenance.json
+            BUILD-ERRORS.md
+      - name: Fail when the new pack does not build cleanly
+        if: steps.update.outputs.code != '0'
+        run: exit 1

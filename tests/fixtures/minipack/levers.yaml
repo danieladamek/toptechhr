@@ -1,0 +1,47 @@
+- id: l-one
+  name: Lever l-one
+  stages:
+  - select
+  what: Do it [1].
+  evidence:
+    grade: meta-analysis
+    effect: r = .42 [1]
+    population: k = 3 [1]
+    k_n: k = 3
+  what_it_does_not_do: It does not hire anyone [1].
+  costs: Time [1].
+  when_it_binds_elsewhere:
+  - c-three
+  gates:
+  - g-one
+  enablers:
+  - e-one
+  how_to:
+  - Step one [1].
+  legacy: []
+  as_of: '2026-10-21'
+  sources:
+  - 1
+- id: l-two
+  name: Lever l-two
+  stages:
+  - offer
+  what: Do it [1].
+  evidence:
+    grade: meta-analysis
+    effect: r = .42 [1]
+    population: k = 3 [1]
+    k_n: k = 3
+  what_it_does_not_do: It does not hire anyone [1].
+  costs: Time [1].
+  when_it_binds_elsewhere: []
+  gates:
+  - g-one
+  enablers:
+  - e-one
+  how_to:
+  - Step one [1].
+  legacy: []
+  as_of: '2026-10-21'
+  sources:
+  - 1

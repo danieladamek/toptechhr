@@ -1,0 +1,3 @@
+[submodule "pack/key-personnel"]
+	path = pack/key-personnel
+	url = https://github.com/danieladamek/key-personnel.git
