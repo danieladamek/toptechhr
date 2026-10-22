@@ -42,12 +42,12 @@ export default function QuoteControl() {
         setP({ left, top, result: r.ok ? { ok: true, text: r.text, anchor: r.anchor, citations: r.citations } : null, message: r.ok ? null : S.quoteRefused });
       }, 120);
     };
-    const hide = () => setP(null);
+    check(); // a selection made before this control mounted
     document.addEventListener('mouseup', check);
     document.addEventListener('keyup', check);
     document.addEventListener('selectionchange', check);
-    window.addEventListener('scroll', hide, { passive: true });
-    return () => { document.removeEventListener('mouseup', check); document.removeEventListener('keyup', check); document.removeEventListener('selectionchange', check); window.removeEventListener('scroll', hide); window.clearTimeout(timer.current); };
+    window.addEventListener('scroll', check, { passive: true }); // follow the selection rather than drop it
+    return () => { document.removeEventListener('mouseup', check); document.removeEventListener('keyup', check); document.removeEventListener('selectionchange', check); window.removeEventListener('scroll', check); window.clearTimeout(timer.current); };
   }, []);
   if (!p) return null;
   const done = () => { window.getSelection()?.removeAllRanges(); setP(null); };

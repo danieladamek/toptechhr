@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useMemo, useReducer, useRef, useState, type ReactNode } from 'react';
 import { loadHr, loadRefMeta } from '@/lib/heavy';
 import {
   loadStore, newId, newNotebook, reducer, saveStore, type Notebook, type NotebookAction, type Quote, type RefLine, type RowAttrs, type StartAnswers, type Store,
@@ -37,12 +37,12 @@ export async function refLines(ns: number[]): Promise<RefLine[]> {
 }
 
 export function NotebookProvider({ children }: { children: ReactNode }) {
-  const [store, dispatch] = useReducer((s: Store, a: NotebookAction) => reducer(s, a), undefined, () => loadStore());
+  // saved as part of each change, not in an effect, so a reload or a navigation right after a change never loses it
+  const [store, dispatch] = useReducer((s: Store, a: NotebookAction) => { const next = reducer(s, a); saveStore(next); return next; }, undefined, () => loadStore());
   const [open, setOpenState] = useState<boolean>(() => { try { return sessionStorage.getItem('toptechhr-notebook-open') === '1'; } catch { return false; } });
   const [toast, setToast] = useState<string | null>(null);
   const storeRef = useRef(store);
   storeRef.current = store;
-  useEffect(() => { saveStore(store); }, [store]);
   const setOpen = useCallback((o: boolean) => { setOpenState(o); try { sessionStorage.setItem('toptechhr-notebook-open', o ? '1' : '0'); } catch { /* ignore */ } }, []);
   const toggle = useCallback(() => setOpen(!open), [open, setOpen]);
   const timer = useRef<number>();

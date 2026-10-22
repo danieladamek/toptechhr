@@ -4,10 +4,11 @@ import { useTheme } from '@/lib/theme';
 import { useNotebook } from '@/lib/notebook-context';
 import { assetUrl, AS_OF, EDITION_URL, longDate, manifest, PACK, scrollToId } from '@/lib/data';
 import Drawer from '@/components/ui/Drawer';
+// eager: a selection made while a lazy chunk was still loading would go unseen
+import QuoteControl from './notebook/QuoteControl';
 import { S } from '@/strings';
 const SearchModal = lazy(() => import('./SearchModal'));
 const NotebookPanel = lazy(() => import('./notebook/NotebookPanel'));
-const QuoteControl = lazy(() => import('./notebook/QuoteControl'));
 
 /** The five surfaces (KICKOFF §4): the menu stays at five; record pages live under /plan, /rules and /library. */
 export const NAV = [
@@ -106,7 +107,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       )}
 
       {searchOpen && <Suspense fallback={null}><SearchModal open onClose={() => setSearchOpen(false)} /></Suspense>}
-      {!onNotebookPage && <Suspense fallback={null}><QuoteControl /></Suspense>}
+      {!onNotebookPage && <QuoteControl />}
       {nb.toast && <div role="status" className="no-print fixed bottom-4 left-1/2 z-[75] -translate-x-1/2 rounded-[10px] px-4 py-2 text-[14px] font-semibold text-white shadow-card" style={{ background: 'var(--bx-ink)', color: 'var(--bx-bg)' }} data-testid="toast">{nb.toast}</div>}
 
       <footer className="no-print mt-16" style={{ background: 'var(--bx-surface)' }}>

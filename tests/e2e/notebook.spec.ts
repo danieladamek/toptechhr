@@ -60,7 +60,8 @@ test('the print view renders the six sections with no header or nav', async ({ p
   await page.goto('/notebook');
   await page.getByTestId('new-notebook-page').click();
   await expect(page).toHaveURL(/\/notebook\/nb-/);
-  const id = page.url().split('/').pop();
+  const id = page.url().split('/').pop()!;
+  await expect.poll(() => page.evaluate((k) => localStorage.getItem(k) ?? '', NOTEBOOK_KEY)).toContain(id);
   await page.goto(`/notebook/${id}/print`);
   const body = page.getByTestId('notebook-print');
   await expect(body.locator('h2')).toHaveText(['Situation', 'What we confirmed', 'Actions', 'Rules to check', 'Numbers', 'Sources']);
