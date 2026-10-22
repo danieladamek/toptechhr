@@ -1,0 +1,87 @@
+# glossary-aliases.yaml — TopTechHR HR layer
+version: '0.1'
+as_of: '2026-10-22'
+note: HR vocabulary mapped to glossary.yaml ids; the definition shown is always the pack's.
+aliases:
+- alias: req
+  term: requisition
+- alias: requisition
+  term: requisition
+- alias: LCAT
+  term: labor-category
+- alias: labor cat
+  term: labor-category
+- alias: wrap
+  term: wrap-rate
+- alias: fully burdened rate
+  term: wrap-rate
+- alias: T&M
+  term: time-and-materials-contract
+- alias: Secret clearance
+  term: secret
+- alias: TS
+  term: top-secret
+- alias: SCI
+  term: sensitive-compartmented-information
+- alias: CV
+  term: continuous-vetting
+- alias: interim clearance
+  term: temporary-eligibility
+- alias: E-Verify
+  term: e-verify
+- alias: I-9
+  term: form-i-9
+- alias: background check
+  term: consumer-report
+- alias: pay band
+  term: pay-range-posting-law
+- alias: non-compete
+  term: noncompete-agreement
+- alias: TRAP
+  term: training-repayment-agreement
+- alias: tuition assistance
+  term: section-127-plan
+- alias: layoff notice
+  term: warn-act
+- alias: ghosting
+  term: candidate-ghosting
+- alias: no-show
+  term: new-hire-no-show
+- alias: time to fill
+  term: time-to-fill
+- alias: structured interview
+  term: structured-interview
+- alias: work sample
+  term: work-sample-test
+- alias: RJP
+  term: realistic-job-preview
+- alias: cost per hire
+  term: cost-per-hire
+- alias: turnover cost
+  term: cost-of-turnover
+- alias: counter
+  term: counteroffer
+- alias: sign-on bonus
+  term: signing-bonus
+- alias: stay bonus
+  term: retention-bonus
+- alias: onboarding
+  term: onboarding
+- alias: mentor
+  term: mentoring
+- alias: apprenticeship
+  term: registered-apprenticeship
+- alias: SkillBridge
+  term: skillbridge
+- alias: OFCCP
+  term: ofccp
+- alias: AAP
+  term: vevraa
+- alias: key personnel
+  term: key-personnel-clause
+- alias: bait and switch
+  term: bait-and-switch
+- alias: recompete
+  term: recompete
+- alias: incumbent capture
+  term: successor-contractor

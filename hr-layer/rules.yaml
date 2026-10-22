@@ -1,0 +1,424 @@
+# rules.yaml — TopTechHR HR layer · the 55 gates in the order HR meets them
+version: '0.1'
+as_of: '2026-10-22'
+note: One entry per gate in gates.yaml, grouped by the first moment HR meets it; the state overlays come from states.yaml and are not listed here.
+moments:
+- Posting
+- Screening and interviews
+- The offer
+- Background, clearance and start
+- Start
+- Training terms
+- Keeping people
+- Departures
+- Planning and bidding
+rules:
+- gate: ugesp
+  plain_name: Uniform Guidelines on Employee Selection Procedures (29 CFR 1607)
+  moment: Screening and interviews
+  also: []
+  geo: us
+  sector: all
+- gate: eeoc-selection-procedures
+  plain_name: Title VII, ADA and ADEA rules on tests and selection procedures (EEOC fact sheet)
+  moment: Screening and interviews
+  also:
+  - The offer
+  geo: us
+  sector: all
+- gate: ada-pre-offer-inquiries
+  plain_name: ADA limits on pre-offer disability questions and medical examinations
+  moment: Screening and interviews
+  also:
+  - The offer
+  - Background, clearance and start
+  geo: us
+  sector: all
+- gate: arrest-conviction-records
+  plain_name: Criminal records under Title VII (EEOC 2012 guidance)
+  moment: Screening and interviews
+  also:
+  - Background, clearance and start
+  geo: us
+  sector: all
+- gate: fair-chance-act-contractors
+  plain_name: Federal Fair Chance Act (criminal-history timing for federal contractors)
+  moment: Screening and interviews
+  also:
+  - The offer
+  geo: us
+  sector: all
+- gate: citizenship-status-export-control
+  plain_name: Citizenship-status discrimination in export-controlled hiring (8 U.S.C. 1324b)
+  moment: Posting
+  also:
+  - Screening and interviews
+  - Background, clearance and start
+  geo: us
+  sector: all
+- gate: ai-screening-laws
+  plain_name: Automated and AI screening tools (federal framework and state laws)
+  moment: Posting
+  also:
+  - Screening and interviews
+  geo: us
+  sector: all
+- gate: vevraa-job-listing
+  plain_name: VEVRAA mandatory job listing (41 CFR 60-300.5(a)(2))
+  moment: Posting
+  also: []
+  geo: us
+  sector: all
+- gate: adea-advertising
+  plain_name: Age-preference terms in help-wanted ads (29 CFR 1625.4)
+  moment: Posting
+  also: []
+  geo: us
+  sector: all
+- gate: pay-transparency-posting-laws
+  plain_name: Pay ranges in job postings (state and local laws)
+  moment: Posting
+  also:
+  - The offer
+  geo: us
+  sector: all
+- gate: eeo-contractor-framework-2026
+  plain_name: The contractor EEO framework after the EO 11246 rescission (41 CFR 60-1 ff. removed)
+  moment: Posting
+  also:
+  - Screening and interviews
+  - Planning and bidding
+  geo: us
+  sector: all
+- gate: tm-labor-category-rates
+  plain_name: Labor-category rates and qualifications under T&M and labor-hour contracts (FAR 16.601; 52.232-7)
+  moment: The offer
+  also:
+  - Screening and interviews
+  - Planning and bidding
+  geo: us
+  sector: all
+- gate: far-31-205-6-compensation-allowability
+  plain_name: Compensation allowability on cost-type contracts (FAR 31.205-6)
+  moment: The offer
+  also:
+  - Keeping people
+  geo: us
+  sector: all
+- gate: sca-wage-determinations
+  plain_name: Service Contract Act wage determinations and the health-and-welfare rate
+  moment: The offer
+  also:
+  - Planning and bidding
+  geo: us
+  sector: all
+- gate: contract-price-adjustment-limits
+  plain_name: Price and labor-rate adjustment limits on schedule and T&M contracts
+  moment: The offer
+  also:
+  - Planning and bidding
+  geo: us
+  sector: all
+- gate: equal-pay-act
+  plain_name: Equal Pay Act and pay discrimination (EPA; Title VII)
+  moment: The offer
+  also:
+  - Keeping people
+  geo: us
+  sector: all
+- gate: salary-history-bans
+  plain_name: Salary-history bans (state and local)
+  moment: Screening and interviews
+  also:
+  - The offer
+  geo: us
+  sector: all
+- gate: key-personnel-availability-rule
+  plain_name: Key-personnel availability in proposals (GAO and the Court of Federal Claims)
+  moment: The offer
+  also:
+  - Planning and bidding
+  geo: us
+  sector: all
+- gate: nispom-eligibility-and-sponsorship
+  plain_name: Personnel clearance eligibility and sponsorship under the NISPOM rule (32 CFR 117.10)
+  moment: Background, clearance and start
+  also:
+  - Planning and bidding
+  - Posting
+  - The offer
+  geo: us
+  sector: all
+- gate: facility-clearance-sponsorship
+  plain_name: Entity eligibility (facility clearance) and its sponsorship (32 CFR 117.9)
+  moment: Background, clearance and start
+  also:
+  - Planning and bidding
+  geo: us
+  sector: all
+- gate: temporary-eligibility
+  plain_name: Temporary (interim) eligibility (SEAD 8; 32 CFR 117.10(l))
+  moment: Background, clearance and start
+  also: []
+  geo: us
+  sector: all
+- gate: reciprocity-sead-7
+  plain_name: Reciprocity of investigations and adjudications (SEAD 7)
+  moment: Background, clearance and start
+  also:
+  - Screening and interviews
+  - Posting
+  geo: us
+  sector: all
+- gate: adjudicative-guidelines-sead-4
+  plain_name: National security adjudicative guidelines (SEAD 4) and the Bond Amendment
+  moment: Background, clearance and start
+  also:
+  - Screening and interviews
+  geo: us
+  sector: all
+- gate: e-verify-federal-contractor
+  plain_name: E-Verify for federal contractors (FAR 22.18; 52.222-54)
+  moment: Background, clearance and start
+  also:
+  - Planning and bidding
+  geo: us
+  sector: all
+- gate: form-i-9
+  plain_name: Form I-9 employment eligibility verification (USCIS M-274)
+  moment: Background, clearance and start
+  also: []
+  geo: us
+  sector: all
+- gate: export-control-deemed-exports
+  plain_name: Deemed exports and the U.S.-person rule in hiring (ITAR; DOJ employer fact sheet)
+  moment: Background, clearance and start
+  also:
+  - Posting
+  - Screening and interviews
+  - The offer
+  geo: us
+  sector: all
+- gate: fcra-background-checks
+  plain_name: Background reports under the Fair Credit Reporting Act (FTC employer guidance)
+  moment: Background, clearance and start
+  also:
+  - Screening and interviews
+  - The offer
+  geo: us
+  sector: all
+- gate: cac-credentialing
+  plain_name: Common Access Card sponsorship and investigative standards (32 CFR parts 157 and 161)
+  moment: Background, clearance and start
+  also:
+  - Start
+  geo: us
+  sector: all
+- gate: dod-8140-cyber-workforce
+  plain_name: Cyberspace workforce qualification (DoDM 8140.03)
+  moment: Background, clearance and start
+  also:
+  - Screening and interviews
+  - Training terms
+  geo: us
+  sector: all
+- gate: drug-free-workplace
+  plain_name: Drug-free workplace (FAR 26.5; 52.226-7) after the DFARS testing clause was reserved
+  moment: Background, clearance and start
+  also:
+  - Start
+  geo: us
+  sector: all
+- gate: title-vii-national-security-exception
+  plain_name: Title VII national security exception (42 U.S.C. 2000e-2(g))
+  moment: Background, clearance and start
+  also:
+  - Screening and interviews
+  - The offer
+  geo: us
+  sector: all
+- gate: training-repayment-and-stay-or-pay
+  plain_name: Training repayment and stay-or-pay provisions (CFPB; state laws; the withdrawn federal positions)
+  moment: Training terms
+  also:
+  - The offer
+  - Keeping people
+  geo: us
+  sector: all
+- gate: noncompete-agreements-federal-status
+  plain_name: Noncompete agreements after the FTC rule's vacatur
+  moment: Training terms
+  also:
+  - The offer
+  - Keeping people
+  - Departures
+  geo: us
+  sector: all
+- gate: flsa-training-time
+  plain_name: Compensable training time under the FLSA (29 CFR 785.27)
+  moment: Start
+  also:
+  - Training terms
+  geo: us
+  sector: all
+- gate: far-31-205-44-training-costs
+  plain_name: Allowability of training and education costs (FAR 31.205-44)
+  moment: Training terms
+  also:
+  - Start
+  - Planning and bidding
+  geo: us
+  sector: all
+- gate: section-127-educational-assistance
+  plain_name: Educational assistance programs (IRC §127)
+  moment: Training terms
+  also:
+  - The offer
+  - Keeping people
+  geo: us
+  sector: all
+- gate: nispom-reporting-and-continuous-vetting
+  plain_name: Reporting duties and continuous vetting for cleared employees (32 CFR 117.8; SEAD 3)
+  moment: Keeping people
+  also:
+  - Departures
+  - Start
+  geo: us
+  sector: all
+- gate: key-personnel-substitution-clause
+  plain_name: Key-personnel substitution and notice clauses (agency clauses; HHSAR 352.237-75 as the example)
+  moment: Departures
+  also:
+  - Keeping people
+  - The offer
+  - Planning and bidding
+  geo: us
+  sector: all
+- gate: no-poach-and-non-solicitation
+  plain_name: No-poach agreements and non-solicitation terms (DOJ/FTC worker antitrust guidelines, 2025)
+  moment: Keeping people
+  also:
+  - Planning and bidding
+  - Posting
+  geo: us
+  sector: all
+- gate: warn-act
+  plain_name: Worker Adjustment and Retraining Notification Act
+  moment: Departures
+  also:
+  - Keeping people
+  - Planning and bidding
+  geo: us
+  sector: all
+- gate: service-contract-transition-rules
+  plain_name: Successor-contractor rules after the nondisplacement order's revocation
+  moment: Departures
+  also:
+  - Keeping people
+  - Planning and bidding
+  geo: us
+  sector: all
+- gate: far-37-104-personal-services
+  plain_name: Personal services contracts and the limit on customer direction (FAR 37.104)
+  moment: Planning and bidding
+  also:
+  - Screening and interviews
+  - Start
+  - Keeping people
+  geo: us
+  sector: all
+- gate: limitations-on-subcontracting
+  plain_name: Limitations on subcontracting (FAR 52.219-14)
+  moment: Planning and bidding
+  also:
+  - Posting
+  geo: us
+  sector: all
+- gate: consent-to-subcontract
+  plain_name: Consent to subcontract (FAR 52.244-2)
+  moment: Planning and bidding
+  also:
+  - Posting
+  geo: us
+  sector: all
+- gate: prompt-payment-and-accelerated-payment
+  plain_name: Payment timing (Prompt Payment Act; FAR 32.009)
+  moment: Planning and bidding
+  also:
+  - Background, clearance and start
+  - Training terms
+  geo: us
+  sector: all
+- gate: applicant-record-retention
+  plain_name: Applicant and selection record retention (29 CFR 1602.14; UGESP; state rules)
+  moment: Planning and bidding
+  also:
+  - Screening and interviews
+  - Posting
+  geo: us
+  sector: all
+- gate: proposal-staffing-representations
+  plain_name: Proposal staffing representations (GAO bait-and-switch standard)
+  moment: Planning and bidding
+  also:
+  - The offer
+  geo: us
+  sector: all
+- gate: al-e-verify-beason-hammon
+  plain_name: Alabama E-Verify mandate (Beason-Hammon Act, §§ 31-13-15 and 31-13-9)
+  moment: Background, clearance and start
+  also:
+  - The offer
+  geo: al
+  sector: all
+- gate: al-drug-free-workplace-program
+  plain_name: Drug-Free Workplace Program certification (§§ 25-5-330 to 25-5-340)
+  moment: The offer
+  also:
+  - Background, clearance and start
+  - Start
+  geo: al
+  sector: all
+- gate: al-right-to-work
+  plain_name: Alabama right to work (§§ 25-7-30 to 25-7-36; Const. art. I, § 36.05)
+  moment: The offer
+  also:
+  - Start
+  geo: al
+  sector: all
+- gate: al-new-hire-reporting
+  plain_name: Alabama new-hire reporting within seven days (§ 25-11-5)
+  moment: Background, clearance and start
+  also:
+  - Start
+  geo: al
+  sector: all
+- gate: al-child-labor-certificates
+  plain_name: Alabama child labor certificates (§ 25-8-45)
+  moment: Background, clearance and start
+  also: []
+  geo: al
+  sector: all
+- gate: al-warn-federal-only
+  plain_name: WARN notices in Alabama (federal WARN only)
+  moment: Planning and bidding
+  also:
+  - Departures
+  geo: al
+  sector: all
+- gate: cmmc-2-0
+  plain_name: CMMC (Cybersecurity Maturity Model Certification) — 32 CFR part 170 and DFARS 252.204-7021
+  moment: Background, clearance and start
+  also:
+  - Planning and bidding
+  - Training terms
+  geo: us
+  sector: defense
+- gate: vevraa-section-503-aaps
+  plain_name: VEVRAA and Section 503 affirmative action plans (what remains after the 2026 OFCCP rules)
+  moment: Planning and bidding
+  also:
+  - Screening and interviews
+  - Posting
+  geo: us
+  sector: all

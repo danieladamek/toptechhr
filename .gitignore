@@ -1,0 +1,8 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+scripts/.cache/
+public/data/benchmarks/
+tsconfig.tsbuildinfo
+.DS_Store

@@ -1,0 +1,106 @@
+# situations.yaml — TopTechHR HR layer · the Start flow, pointing at the Key Personnel pathfinder
+version: '0.1'
+as_of: '2026-10-22'
+note: The Start flow of TopTechHR. Every tag points at pathfinder.yaml in the Key Personnel pack; the rule (3/2/1) is the pack's and is not restated here. This file renames and orders; it carries no facts.
+steps:
+- id: goal
+  prompt: What are you trying to do?
+  type: single
+  maps_to: stage
+  options:
+  - label: Fill a role
+    stages:
+    - plan
+    - attract
+    - select
+    - offer
+    - clear-start
+    default_stage: null
+    hint: The stage question below narrows it; "not sure" is allowed.
+  - label: Get a new hire productive
+    stages:
+    - onboard
+    - develop
+    default_stage: onboard
+  - label: Keep someone
+    stages:
+    - retain
+    default_stage: retain
+  - label: Hand a role over or wind a contract down
+    stages:
+    - handover
+    default_stage: handover
+  - label: Plan headcount for a bid or an option year
+    stages:
+    - plan
+    default_stage: plan
+- id: pattern
+  prompt: What are you seeing?
+  type: single
+  maps_to: pattern
+  options:
+  - tag: many-apply-few-qualify
+    label: Many applicants, few who qualify
+  - tag: withdraw-mid-process
+    label: Candidates withdraw before a decision
+  - tag: few-plausible-candidates
+    label: Few plausible candidates
+  - tag: pass-then-decline
+    label: Candidates pass but decline the offer
+  - tag: accept-cannot-start
+    label: Candidates accept but cannot start
+  - tag: start-then-struggle
+    label: Employees start but struggle
+  - tag: productive-employees-leave
+    label: Productive employees leave
+  - tag: customer-rejects
+    label: We approve, the customer rejects
+- id: stage
+  prompt: Where is the opening, if you know?
+  type: single
+  maps_to: stage
+  shown_when: goal = Fill a role
+  options:
+  - tag: plan
+    label: Planning it
+  - tag: attract
+    label: Posted, finding people
+  - tag: select
+    label: Interviewing and testing
+  - tag: offer
+    label: Making the offer
+  - tag: clear-start
+    label: Clearance and start date
+  - tag: null
+    label: Not sure
+- id: conditions
+  prompt: What's true of the role?
+  type: multi
+  maps_to: conditions
+  options:
+  - tag: requires-clearance
+    label: Needs a security clearance or sponsorship
+  - tag: customer-approves-candidate
+    label: The customer approves or rejects the person by name
+  - tag: urgent-start
+    label: The start date is urgent
+  - tag: rare-skill-or-passive-market
+    label: The skill is rare or the market is mostly passive
+  - tag: pay-above-rate
+    label: Market pay sits above what the contract rate can carry
+  - tag: developmental-hire-possible
+    label: A junior or developmental hire could fill it
+  - tag: tentative-opening
+    label: The opening is tentative (proposal, option year, unfunded)
+  - tag: tight-cash-or-budget
+    label: Cash or the hiring budget is tight
+  - tag: team-overloaded
+    label: The team is carrying the vacancy and is overloaded
+  - tag: onsite-fixed-schedule
+    label: Onsite on a fixed schedule set by the customer
+- id: state
+  prompt: Where is the work?
+  type: single
+  maps_to: state
+  default: us-al
+  note: All 51 records in states.yaml are selectable; the default is Alabama.

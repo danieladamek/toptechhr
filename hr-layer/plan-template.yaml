@@ -1,0 +1,47 @@
+# plan-template.yaml — TopTechHR HR layer · the Notebook's action-plan template (the decision record, written for HR)
+version: '0.1'
+as_of: '2026-10-22'
+name: Action plan
+sections:
+- id: situation
+  title: Situation
+  fills_from: the Start answers (goal, pattern, stage, conditions, state), as a sentence
+  editable: true
+- id: confirmed
+  title: What we confirmed
+  fills_from: constraints the user keeps from "Check these first" (name + how-to-tell line + sources)
+  editable: true
+- id: actions
+  title: Actions
+  fills_from: 'levers added with "Add to plan": plain name, the what_it_does_not_do line, sources; fields owner, by (date), measure left as placeholders'
+  editable: true
+  placeholders:
+  - '[owner]'
+  - '[date]'
+  - '[measure]'
+- id: rules
+  title: Rules to check
+  fills_from: 'gates and state overlays added from Plan or Rules: name, governing_text, as_of, primary_pending flag where set'
+  editable: true
+- id: numbers
+  title: Numbers
+  fills_from: 'indicators added from Plan or Numbers: value, counterpart value, reference_period, publisher, series'
+  editable: true
+- id: sources
+  title: Sources
+  fills_from: every reference cited by anything above, in pack numbering with the citation line; filled automatically and not editable
+  editable: false
+quote_block:
+  carries:
+  - quoted text
+  - record or section title
+  - citation numbers in the passage
+  - each cited reference's citation line
+  - a link back to the page
+  rule: a quote is never stored without its provenance; exports keep it as a footnote or trailing line
+exports:
+- docx
+- pdf
+- html
+- markdown
+- json (re-importable)

@@ -1,0 +1,291 @@
+# actions.yaml — TopTechHR HR layer · plain names and HR moments for the 69 levers
+version: '0.1'
+as_of: '2026-10-22'
+note: One entry per lever in levers.yaml. plain_name may be edited for HR readers; everything else (evidence grade, effect, population, what it does not do, sources) is read from the lever record and never restated here.
+moments:
+- Planning
+- Posting and finding people
+- Interviewing and testing
+- The offer
+- Clearance and start
+- The first weeks
+- Growing people
+- Keeping people
+- Departures and handovers
+actions:
+- lever: l-structured-interview
+  plain_name: A structured interview
+  moment: Planning
+  stage: null
+- lever: l-mechanical-scoring
+  plain_name: Score candidates with a fixed rubric, then combine the scores by rule
+  moment: Planning
+  stage: null
+- lever: l-work-sample-or-knowledge-test
+  plain_name: A work sample or job-knowledge test built from the job
+  moment: Planning
+  stage: null
+- lever: l-private-or-collaborative-technical-assessment
+  plain_name: A technical assessment done privately or as a pair, not on a whiteboard in front of a panel
+  moment: Planning
+  stage: null
+- lever: l-realistic-job-preview
+  plain_name: Tell candidates the honest downsides before they accept
+  moment: Planning
+  stage: null
+- lever: l-fast-decision-and-offer
+  plain_name: Decide and make the offer fast
+  moment: Planning
+  stage: null
+- lever: l-interview-plan-and-preview
+  plain_name: Send candidates the interview plan in advance
+  moment: Planning
+  stage: null
+- lever: l-interviewer-training
+  plain_name: Train the interviewers
+  moment: Planning
+  stage: null
+- lever: l-validate-and-document-screen
+  plain_name: Validate and write down every screen before using it
+  moment: Planning
+  stage: null
+- lever: l-adverse-impact-monitoring
+  plain_name: Monitor pass rates by group
+  moment: Planning
+  stage: null
+- lever: l-affirmative-skill-filters
+  plain_name: Filter on skills, not on knock-out keywords
+  moment: Planning
+  stage: null
+- lever: l-pareto-weighting
+  plain_name: Weight the few requirements that matter most
+  moment: Planning
+  stage: null
+- lever: l-conditional-offer-sequencing
+  plain_name: Put the medical and background steps after the offer
+  moment: Planning
+  stage: null
+- lever: l-employee-referral-program
+  plain_name: A referral program with a bonus tied to tenure
+  moment: Planning
+  stage: null
+- lever: l-source-of-hire-tracking
+  plain_name: Track where good hires come from
+  moment: Planning
+  stage: null
+- lever: l-posting-rewrite
+  plain_name: 'Rewrite the posting: searchable title, pay range, plain requirements'
+  moment: Planning
+  stage: null
+- lever: l-remote-or-hybrid-option
+  plain_name: Offer remote or hybrid work where the contract allows
+  moment: Planning
+  stage: null
+- lever: l-skills-based-requirements
+  plain_name: Replace degree and years requirements with skill requirements
+  moment: Planning
+  stage: null
+- lever: l-military-transition-pipeline
+  plain_name: A military transition pipeline (SkillBridge, VEVRAA listing)
+  moment: Planning
+  stage: null
+- lever: l-university-pipeline
+  plain_name: A university and early-career pipeline
+  moment: Planning
+  stage: null
+- lever: l-employer-image-management
+  plain_name: Manage how the firm looks to candidates
+  moment: Planning
+  stage: null
+- lever: l-ad-delivery-audit
+  plain_name: Check who the ad actually reaches
+  moment: Planning
+  stage: null
+- lever: l-set-range-from-rate-and-market
+  plain_name: Set the pay range from the contract rate and the market
+  moment: Planning
+  stage: null
+- lever: l-post-and-state-negotiability
+  plain_name: Post the range and say whether it is negotiable
+  moment: Planning
+  stage: null
+- lever: l-internal-equity-review-before-offer
+  plain_name: Check the offer against current staff pay before it goes out
+  moment: Planning
+  stage: null
+- lever: l-total-rewards-statement
+  plain_name: Show the whole package, not just salary
+  moment: Planning
+  stage: null
+- lever: l-rate-relief-request
+  plain_name: Ask the customer for rate relief
+  moment: Planning
+  stage: null
+- lever: l-bonus-under-established-plan
+  plain_name: Pay bonuses only under a plan written before the work
+  moment: Planning
+  stage: null
+- lever: l-key-personnel-contingent-offer-protocol
+  plain_name: A contingent-offer protocol for named key personnel
+  moment: Planning
+  stage: null
+- lever: l-salary-history-compliance
+  plain_name: Keep salary-history questions out where the law bars them
+  moment: Planning
+  stage: null
+- lever: l-confirm-sponsorship-path-before-posting
+  plain_name: Confirm the clearance sponsorship path before posting
+  moment: Planning
+  stage: null
+- lever: l-facility-clearance-sponsorship
+  plain_name: Get the facility clearance sponsored
+  moment: Planning
+  stage: null
+- lever: l-two-track-hiring-plan
+  plain_name: Run a cleared track and an uncleared track in parallel
+  moment: Planning
+  stage: null
+- lever: l-temporary-eligibility-request
+  plain_name: Ask for interim (temporary) eligibility
+  moment: Planning
+  stage: null
+- lever: l-reciprocity-first-recruiting
+  plain_name: Recruit people whose clearance can transfer
+  moment: Planning
+  stage: null
+- lever: l-offer-to-start-interval-management
+  plain_name: Keep the gap between acceptance and start short and warm
+  moment: Planning
+  stage: null
+- lever: l-bridge-work-plan
+  plain_name: Plan paid work for the wait before access
+  moment: Planning
+  stage: null
+- lever: l-pre-start-access-checklist
+  plain_name: A pre-start checklist for access, badges and systems
+  moment: Planning
+  stage: null
+- lever: l-start-date-compliance-sequence
+  plain_name: The compliance steps in order for the start date
+  moment: Planning
+  stage: null
+- lever: l-structured-onboarding-program
+  plain_name: A structured onboarding program
+  moment: Planning
+  stage: null
+- lever: l-readiness-milestones-plan
+  plain_name: Readiness milestones for the first weeks
+  moment: Planning
+  stage: null
+- lever: l-supervised-junior-work-package
+  plain_name: A supervised work package for a junior hire
+  moment: Planning
+  stage: null
+- lever: l-training-with-lawful-retention-terms
+  plain_name: Training with retention terms that hold up
+  moment: Planning
+  stage: null
+- lever: l-protected-mentoring-time
+  plain_name: Protect time for mentoring
+  moment: Planning
+  stage: null
+- lever: l-representative-task-training
+  plain_name: Train on tasks that look like the real work
+  moment: Planning
+  stage: null
+- lever: l-registered-apprenticeship
+  plain_name: A registered apprenticeship
+  moment: Planning
+  stage: null
+- lever: l-tie-development-to-named-demand
+  plain_name: Tie each development plan to a named contract need
+  moment: Planning
+  stage: null
+- lever: l-cohort-return-tracking
+  plain_name: Track what each training cohort returns
+  moment: Planning
+  stage: null
+- lever: l-pay-review-against-market-and-peers
+  plain_name: Review pay against the market and against peers
+  moment: Planning
+  stage: null
+- lever: l-technical-ladder-and-lateral-moves
+  plain_name: A technical ladder and lateral moves
+  moment: Planning
+  stage: null
+- lever: l-manager-check-ins-and-stay-conversations
+  plain_name: Manager check-ins and stay conversations
+  moment: Planning
+  stage: null
+- lever: l-capacity-signalling-and-scope-negotiation
+  plain_name: Let people signal capacity and negotiate scope
+  moment: Planning
+  stage: null
+- lever: l-approved-schedule-flexibility
+  plain_name: Schedule flexibility the customer has approved
+  moment: Planning
+  stage: null
+- lever: l-honest-pipeline-communication
+  plain_name: Be honest about the pipeline and the recompete
+  moment: Planning
+  stage: null
+- lever: l-embeddedness-building
+  plain_name: Build the ties that keep people
+  moment: Planning
+  stage: null
+- lever: l-cross-training-and-documented-handoffs
+  plain_name: Cross-train and document handoffs
+  moment: Planning
+  stage: null
+- lever: l-departure-protocol
+  plain_name: A departure protocol
+  moment: Planning
+  stage: null
+- lever: l-lawful-non-solicitation-terms
+  plain_name: Non-solicitation terms that are lawful
+  moment: Planning
+  stage: null
+- lever: l-confirm-the-opening
+  plain_name: Confirm the opening is real and funded
+  moment: Planning
+  stage: null
+- lever: l-requisition-scorecard-with-customer
+  plain_name: A requisition scorecard agreed with the customer
+  moment: Planning
+  stage: null
+- lever: l-approval-milestones-and-escalation
+  plain_name: Approval milestones with an escalation path
+  moment: Planning
+  stage: null
+- lever: l-all-in-acquisition-budget
+  plain_name: An all-in hiring budget
+  moment: Planning
+  stage: null
+- lever: l-hiring-ahead-exposure-cap
+  plain_name: A cap on how far ahead of the contract to hire
+  moment: Planning
+  stage: null
+- lever: l-vacancy-cost-estimate
+  plain_name: Put a cost on the vacancy
+  moment: Planning
+  stage: null
+- lever: l-wrap-rate-feasibility-check
+  plain_name: Check the wrap rate before promising a salary
+  moment: Planning
+  stage: null
+- lever: l-rolling-demand-forecast
+  plain_name: A rolling forecast of openings
+  moment: Planning
+  stage: null
+- lever: l-customer-approved-partner-support
+  plain_name: Partner support the customer has approved
+  moment: Planning
+  stage: null
+- lever: l-pipeline-record-and-evidence-review
+  plain_name: Keep the pipeline record and review the evidence
+  moment: Planning
+  stage: null
+- lever: l-one-requisition-owner
+  plain_name: One owner per requisition
+  moment: Planning
+  stage: null
