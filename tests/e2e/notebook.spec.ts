@@ -32,7 +32,8 @@ test('quote from a lever card, persist, export, delete, import', async ({ page }
   await expect(quote.getByTestId('quote-refs')).toContainText(/\[\d+\] \S+/);
 
   await page.reload();
-  if (!(await page.getByTestId('notebook-panel').isVisible())) await page.getByTestId('notebook-toggle').click();
+  // the panel was open when the page reloaded, so it reopens (this tab's session remembers it)
+  await expect(page.getByTestId('notebook-toggle')).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByTestId('quote-block').first()).toBeVisible();
   await expect(page.getByTestId('notebook-persistence')).toHaveText('Saved in this browser only. Export to keep it. Nothing is sent anywhere.');
 
