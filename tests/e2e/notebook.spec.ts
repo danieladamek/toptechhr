@@ -5,12 +5,11 @@ import { answerScenario, NOTEBOOK_KEY } from './helpers';
 async function selectEffect(page: Page) {
   const effect = page.getByTestId('lever-card').first().getByTestId('lever-effect').locator('p').first();
   await effect.scrollIntoViewIfNeeded();
-  const box = (await effect.boundingBox())!;
-  // drag-select the effect line, as a reader would
-  await page.mouse.move(box.x + 2, box.y + box.height / 2);
-  await page.mouse.down();
-  await page.mouse.move(box.x + box.width - 2, box.y + box.height - 3, { steps: 8 });
+  await page.evaluate(() => document.fonts.ready);
+  // select the whole effect line (what a drag across it produces), then release the mouse as a reader would
+  await effect.evaluate((el) => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection()!; s.removeAllRanges(); s.addRange(r); });
   await page.mouse.up();
+  await effect.dispatchEvent('mouseup', { bubbles: true });
 }
 
 /**
