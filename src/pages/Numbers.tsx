@@ -72,7 +72,7 @@ export default function Numbers() {
                         <td className="font-semibold whitespace-nowrap" style={{ color: 'var(--bx-ink)' }}>{c.value}{ok && <span className="block text-[13px]" data-testid="refreshed-value">{ok.value} · {periodText(ok)} ({S.refreshed(new Date(bls.data!.fetchedAt).toLocaleDateString('en-GB'))})</span>}</td>
                         <td>{c.reference_period}</td>
                         <td>{c.publisher}</td>
-                        {paired && <td>{c.counterpart_stub ? <span data-testid="counterpart">{c.counterpart_stub.value} <span className="block text-[13px] bx-muted">{c.counterpart_stub.name} · {c.counterpart_stub.reference_period}</span></span> : '—'}</td>}
+                        {paired && <td>{c.counterpart_stub ? <span data-testid="counterpart">{c.counterpart_stub.value} <span className="block text-[13px] bx-muted">{c.counterpart_stub.name} · {c.counterpart_stub.reference_period}</span></span> : c.counterpart_note ? <span className="text-[13px]" data-testid="counterpart-note">{S.noTwin(c.counterpart_note)}</span> : '—'}</td>}
                         <td className="text-[13px]">{c.series ? <><code>{c.series}</code> <span className="block">{ok ? S.apiConfirmed : S.seriesLabel[c.series_confirmed] ?? c.series_confirmed}</span></> : '—'}</td>
                         <td><CiteList ns={c.sources} /></td>
                         <td><AddButton kind="number" refId={c.id} build={() => numberRow(c.id)} label={S.addNumber} /></td>

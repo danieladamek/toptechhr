@@ -36,6 +36,7 @@ export async function actionRow(leverId: string): Promise<RowAttrs | null> {
   return finish({
     kind: 'action', refId: l.id, title: plainName || l.name, packName: l.name, route: `/plan/actions/${l.id}`,
     lines: [
+      ...(hr.actions.byLever[leverId]?.moment ? [{ label: `${S.moment}:`, text: hr.actions.byLever[leverId].moment }] : []),
       { label: 'Evidence:', text: `${l.evidence.grade}. ${plain(l.evidence.effect)}` },
       { label: 'Population:', text: plain(l.evidence.population) },
       { label: S.doesNot, text: plain(l.what_it_does_not_do) },
@@ -78,6 +79,7 @@ export async function numberRow(indicatorId: string): Promise<RowAttrs | null> {
     { label: 'Publisher:', text: String(c.publisher ?? '') },
   ];
   if (c.counterpart_stub) lines.push({ label: `${S.counterpart}:`, text: `${c.counterpart_stub.name}: ${c.counterpart_stub.value} (${c.counterpart_stub.reference_period})` });
+  else if (c.counterpart_note) lines.push({ label: `${S.counterpart}:`, text: S.noTwin(c.counterpart_note) });
   if (c.series) lines.push({ label: 'Series:', text: `${c.series} (${S.seriesLabel[c.series_confirmed] ?? c.series_confirmed})` });
   return finish({ kind: 'number', refId: c.id, title: c.name, packName: c.name, route: `/numbers#${c.id}`, lines }, i.sources);
 }

@@ -44,9 +44,15 @@ export function Card({ children, id, className = '', testId }: { children: React
   return <article id={id} className={`bx-card p-5 sm:p-6 scroll-mt-28 ${className}`} data-testid={testId}>{children}</article>;
 }
 
+/** The HR moment an action is met at (hr-layer/actions.yaml: the lever's first stage), with its other moments. */
+export function MomentChip({ moment, also }: { moment?: string; also?: string[] }) {
+  if (!moment) return null;
+  return <span className="tt-grade" data-testid="moment-chip" title={also?.length ? `${S.alsoAt}: ${also.join(' · ')}` : undefined}>{S.moment}: {moment}{also?.length ? ` · ${S.alsoAt} ${also.join(' · ')}` : ''}</span>;
+}
+
 /** Lever: plain name over pack name, grade, the evidence as reported, "Does not:" directly beneath, Acts on, Do first. */
-export function LeverCard({ lever, plainName, actsOn, doFirst, defense, route, headingLevel = 3, compact = false }: {
-  lever: Lever; plainName?: string; actsOn: { id: string; name: string }[]; doFirst?: { other: string; edge: string }[]; defense?: boolean; route: string; headingLevel?: 2 | 3 | 4; compact?: boolean;
+export function LeverCard({ lever, plainName, moment, also, actsOn, doFirst, defense, route, headingLevel = 3, compact = false }: {
+  lever: Lever; plainName?: string; moment?: string; also?: string[]; actsOn: { id: string; name: string }[]; doFirst?: { other: string; edge: string }[]; defense?: boolean; route: string; headingLevel?: 2 | 3 | 4; compact?: boolean;
 }) {
   const H = `h${headingLevel}` as 'h3';
   const ev = lever.evidence;
@@ -60,7 +66,7 @@ export function LeverCard({ lever, plainName, actsOn, doFirst, defense, route, h
               ? <p className="mt-0.5 text-[14px] bx-muted" data-testid="pack-name"><Link to={`/plan/actions/${lever.id}`}>{lever.name}</Link></p>
               : <p className="mt-0.5 text-[14px]"><Link to={`/plan/actions/${lever.id}`}>Open the record</Link></p>}
           </div>
-          <div className="flex flex-wrap items-center gap-1.5"><Grade grade={ev.grade} />{defense && <span className="tt-deco" data-testid="defense-chip">{S.defenseChip}</span>}</div>
+          <div className="flex flex-wrap items-center gap-1.5"><Grade grade={ev.grade} /><MomentChip moment={moment} also={also} />{defense && <span className="tt-deco" data-testid="defense-chip">{S.defenseChip}</span>}</div>
         </div>
         <div className="mt-3 rounded-[12px] p-3" style={{ background: 'var(--bx-bg)' }} data-testid="evidence-block">
           <p className="tt-eyebrow">{S.effectAsReported}</p>
@@ -187,12 +193,15 @@ export function NumberCardView({ c, twin, bls, level = 3 }: { c: NumberCardT; tw
       <QA route={`/numbers#${c.id}`} type="indicators" id={c.id} title={c.name} cites={c.sources}>
         <div className="flex flex-wrap items-center gap-1.5"><GeoChips geo={c.geo} sector={c.sector} />{older && <span className="tt-amber" data-testid="older-note">{S.olderNote}</span>}</div>
         <H className="mt-1 text-[16px] leading-snug">{c.name}</H>
-        <div className={`mt-2 grid gap-3 ${twin || c.counterpart_stub ? 'sm:grid-cols-2' : ''}`}>
+        <div className={`mt-2 grid gap-3 ${twin || c.counterpart_stub || c.counterpart_note ? 'sm:grid-cols-2' : ''}`}>
           <div data-testid="pack-figure" data-q-block="">
             <p className="font-display text-[26px] font-extrabold leading-none" style={{ color: 'var(--bx-ink)' }}>{c.value}</p>
             <p className="mt-1 text-[14px]">{c.reference_period} · {c.publisher}</p>
             {ok && <p className="mt-1 text-[14px] font-semibold" data-testid="refreshed-value" style={{ color: 'var(--bx-ink)' }}>{ok.value} · {periodText(ok)} <span className="tt-grade">{S.refreshed(new Date(bls.data!.fetchedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }))}</span></p>}
           </div>
+          {!twin && !c.counterpart_stub && typeof c.counterpart_note === 'string' && c.counterpart_note && (
+            <div className="rounded-[12px] p-3 text-[14px]" style={{ background: 'var(--bx-bg)' }} data-testid="counterpart-note">{S.noTwin(c.counterpart_note)}</div>
+          )}
           {(twin || c.counterpart_stub) && (
             <div className="rounded-[12px] p-3" style={{ background: 'var(--bx-bg)' }} data-testid="counterpart">
               <p className="tt-eyebrow">{c.geo === 'us' ? S.counterpartOf : S.counterpart}</p>

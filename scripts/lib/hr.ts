@@ -11,7 +11,7 @@
 
 export interface HrSituationOption { label: string; tag?: string | null; stages?: string[]; default_stage?: string | null; hint?: string }
 export interface HrStep { id: string; prompt: string; type: 'single' | 'multi'; maps_to: string; shown_when?: string; default?: string; note?: string; options?: HrSituationOption[] }
-export interface HrAction { lever: string; plain_name: string; moment: string; stage?: string | null }
+export interface HrAction { lever: string; plain_name: string; moment: string; stage?: string | null; also?: string[] }
 export interface HrRule { gate: string; plain_name: string; moment: string; also: string[]; geo?: string; sector?: string }
 export interface HrTemplateSection { id: string; title: string; fills_from: string; editable: boolean; placeholders?: string[] }
 export interface Hr {

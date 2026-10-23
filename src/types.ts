@@ -156,7 +156,7 @@ export interface BlsLatest {
 /* ── TopTechHR (KICKOFF §3) */
 export interface HrStepOption { label: string; tag?: string | null; stages?: string[]; default_stage?: string | null; hint?: string }
 export interface HrStep { id: 'goal' | 'pattern' | 'stage' | 'conditions' | 'state'; prompt: string; type: 'single' | 'multi'; maps_to: string; shown_when?: string; default?: string; note?: string; options?: HrStepOption[] }
-export interface HrAction { lever: string; plain_name: string; moment: string; stage?: string | null }
+export interface HrAction { lever: string; plain_name: string; moment: string; stage?: string | null; also?: string[] }
 export interface HrRule { gate: string; plain_name: string; moment: string; also: string[]; geo?: string; sector?: string }
 export interface HrTemplateSection { id: 'situation' | 'confirmed' | 'actions' | 'rules' | 'numbers' | 'sources'; title: string; fills_from: string; editable: boolean; placeholders?: string[] }
 export interface Hr {
@@ -168,5 +168,5 @@ export interface Hr {
 }
 export interface PlanOrderEntry { levers: string[]; do_first: Record<string, { before: string; edge: string }[]> }
 export interface CounterpartStub { id: string; name: string; value: string; reference_period: string; geo: string }
-export interface NumberCard extends Indicator { geo: string; sector: string; series_confirmed: string; counterpart: string; counterpart_stub: CounterpartStub | null; counterpart_of: string[] }
+export interface NumberCard extends Indicator { geo: string; sector: string; series_confirmed: string; counterpart: string; counterpart_note?: string; counterpart_stub: CounterpartStub | null; counterpart_of: string[] }
 export interface Numbers { groups: Record<string, Record<string, string[]>>; cards: Record<string, NumberCard>; unresolved: { id: string; counterpart: string }[]; one_way: { id: string; counterpart: string }[] }

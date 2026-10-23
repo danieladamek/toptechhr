@@ -3,6 +3,7 @@ name: Build, test and deploy TopTechHR
 on:
   push:
     branches: [main]
+  pull_request: # the pack-update PR (and any other) runs the tests; only main deploys
   workflow_dispatch:
   schedule:
     - cron: '23 10 * * 1' # weekly: re-refresh the BLS series and redeploy
@@ -59,7 +60,7 @@ jobs:
 
   deploy:
     needs: e2e
-    if: always() && (needs.e2e.result == 'success' || needs.e2e.result == 'skipped')
+    if: always() && github.event_name != 'pull_request' && (needs.e2e.result == 'success' || needs.e2e.result == 'skipped')
     runs-on: ubuntu-latest
     environment:
       name: github-pages

@@ -191,7 +191,7 @@ export default function Plan() {
                       if (!l) return null;
                       const actsOn = plan.active.filter((r) => plan.cMap.get(r.id)?.levers?.includes(lid)).map((r) => ({ id: r.id, name: plan.cMap.get(r.id)!.name }));
                       const df = (doFirst[lid] ?? []).map((x) => ({ other: d.hr.actions.byLever[x.before]?.plain_name || plan.lMap.get(x.before)?.name || x.before, edge: x.edge }));
-                      return <LeverCard key={lid} lever={l} plainName={d.hr.actions.byLever[lid]?.plain_name} actsOn={actsOn} doFirst={df} defense={leverDefense(l)} route={`/plan#${lid}`} headingLevel={4} />;
+                      return <LeverCard key={lid} lever={l} plainName={d.hr.actions.byLever[lid]?.plain_name} moment={d.hr.actions.byLever[lid]?.moment} also={d.hr.actions.byLever[lid]?.also} actsOn={actsOn} doFirst={df} defense={leverDefense(l)} route={`/plan#${lid}`} headingLevel={4} />;
                     })}
                   </div>
                 </div>

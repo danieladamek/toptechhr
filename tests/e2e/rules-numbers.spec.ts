@@ -54,3 +54,18 @@ test('without the data file: the pack value stands with the pack label, and /abo
   await expect(page.getByTestId('refresh-missing')).toBeVisible();
   await expect(page.getByTestId('refresh-failed')).toContainText('LASST010000000000003');
 });
+
+test('/numbers: no Alabama or Huntsville figure without its national twin or its note', async ({ page }) => {
+  await page.goto('/numbers?tab=alabama');
+  const cards = page.getByTestId('numbers-panel-alabama').getByTestId('number-card');
+  await expect(cards.first()).toBeVisible();
+  const n = await cards.count();
+  for (let i = 0; i < n; i++) {
+    const c = cards.nth(i);
+    expect(await c.getByTestId('counterpart').count() + await c.getByTestId('counterpart-note').count(), await c.locator('h2').innerText()).toBeGreaterThan(0);
+  }
+  for (const row of await page.getByTestId('wage-row').all()) expect(await row.getByTestId('counterpart').count() + await row.getByTestId('counterpart-note').count()).toBeGreaterThan(0);
+  // the Huntsville defense figure sits on the Defense tab, with its note where the twin would be
+  await page.getByTestId('numbers-tab-defense').click();
+  await expect(page.locator('#ind-redstone-arsenal-workforce').getByTestId('counterpart-note')).toContainText('No national twin shown: an installation headcount has no national twin');
+});

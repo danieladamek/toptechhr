@@ -49,6 +49,9 @@ export interface RecordCheckContext {
   /** pathfinder pattern + condition tags and the pattern aliases */
   situationTags: Set<string>;
   gateWords?: number;
+  /** status vocabularies as the file headers state them (KICKOFF §1); the schema's lists are the fallback */
+  overlayStatuses?: Record<string, readonly string[]>;
+  changeStatuses?: readonly string[];
 }
 
 export interface SynthesisField { id: string; file: RecordFile; record: string; field: string; excerpt: string }
@@ -109,6 +112,8 @@ export function checkRecords(set: RecordSet, ctx: RecordCheckContext): RecordChe
   const synthesis: SynthesisField[] = [];
   let proseCount = 0, proseCited = 0, proseFraming = 0;
 
+  const overlayVocab = { ...OVERLAY_STATUSES, ...(ctx.overlayStatuses ?? {}) } as Record<string, readonly string[]>;
+  const changeVocab: readonly string[] = ctx.changeStatuses?.length ? ctx.changeStatuses : CHANGE_STATUSES;
   const ids = Object.fromEntries((Object.keys(set) as RecordFile[]).map((f) => [f, new Set(set[f].map((r) => r.id))])) as Record<RecordFile, Set<string>>;
   const anyId = new Set(Object.values(ids).flatMap((s) => [...s]));
   const list = (v: unknown) => (Array.isArray(v) ? v : []) as unknown[];
@@ -172,13 +177,13 @@ export function checkRecords(set: RecordSet, ctx: RecordCheckContext): RecordChe
             if (!ov) { E(key, `missing overlay ${o}`); continue; }
             refsTo(`${key}/${o}`, 'gates[]', ov.gates, ['gates'], 'gate');
             const st = (ov as { status?: string }).status;
-            if (st && !OVERLAY_STATUSES[o].includes(st)) E(`${key}/${o}/status`, `status ${st} is not in the ${o} vocabulary of the states.yaml header (${OVERLAY_STATUSES[o].join(' | ')})`);
+            if (st && !overlayVocab[o].includes(st)) E(`${key}/${o}/status`, `status ${st} is not in the ${o} vocabulary of the states.yaml header (${overlayVocab[o].join(' | ')})`);
           }
           refsTo(key, 'state_gates[]', r.state_gates, ['gates'], 'gate');
           break;
         }
         case 'changes': {
-          if (typeof r.status === 'string' && !(CHANGE_STATUSES as readonly string[]).includes(r.status)) E(`${key}/status`, `status ${r.status} is not in the changes.yaml header vocabulary (${CHANGE_STATUSES.join(' | ')})`);
+          if (typeof r.status === 'string' && !changeVocab.includes(r.status)) E(`${key}/status`, `status ${r.status} is not in the changes.yaml header vocabulary (${changeVocab.join(' | ')})`);
           for (const x of list(r.records)) if (typeof x === 'string' && !anyId.has(x)) E(key, `records[] -> ${x} resolves to no record in any record file`);
           break;
         }
@@ -187,7 +192,7 @@ export function checkRecords(set: RecordSet, ctx: RecordCheckContext): RecordChe
 
       for (const [i, pc] of list(r.pending_changes).entries()) {
         const st = (pc as { status?: string }).status;
-        if (st && !(CHANGE_STATUSES as readonly string[]).includes(st)) E(`${key}/pending_changes/${i}/status`, `status ${st} is not in the pending-change vocabulary (${CHANGE_STATUSES.join(' | ')})`);
+        if (st && !changeVocab.includes(st)) E(`${key}/pending_changes/${i}/status`, `status ${st} is not in the pending-change vocabulary (${changeVocab.join(' | ')})`);
       }
       for (const n of list(r.sources)) {
         if (typeof n !== 'number') continue;

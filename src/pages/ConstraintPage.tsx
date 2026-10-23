@@ -53,7 +53,7 @@ export default function ConstraintPage() {
           const l = levers?.find((x) => x.id === lid);
           if (!levers) return <p key={lid} className="bx-muted" role="status">{S.loading}</p>;
           if (!l) return <span key={lid} className="bx-todo">{lid} (not a lever record)</span>;
-          return <LeverCard key={lid} lever={l} plainName={hr?.actions.byLever[lid]?.plain_name} actsOn={[]} route={`/plan/actions/${lid}`} compact />;
+          return <LeverCard key={lid} lever={l} plainName={hr?.actions.byLever[lid]?.plain_name} moment={hr?.actions.byLever[lid]?.moment} also={hr?.actions.byLever[lid]?.also} actsOn={[]} route={`/plan/actions/${lid}`} compact />;
         })}
       </div>
 

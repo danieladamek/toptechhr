@@ -55,6 +55,12 @@ def main(hr, pack):
         if x['lever'] not in levers: E(f"actions: lever {x['lever']!r} not in levers.yaml")
         if x['moment'] not in a['moments']: E(f"actions/{x['lever']}: moment {x['moment']!r} not declared")
         if not x.get('plain_name'): E(f"actions/{x['lever']}: no plain_name")
+        for m in x.get('also', []):
+            if m not in a['moments']: E(f"actions/{x['lever']}: also {m!r} not declared")
+    lever_stages = {l['id']: l.get('stages') or [] for l in load(P('levers.yaml'))}
+    for x in a['actions']:
+        st = lever_stages.get(x['lever']) or []
+        if st and x.get('stage') != st[0]: E(f"actions/{x['lever']}: stage {x.get('stage')!r} is not the lever's first stage {st[0]!r}")
     for l in sorted(levers - set(seen)): E(f"actions: lever {l} has no entry")
     for l in sorted({x for x in seen if seen.count(x) > 1}): E(f"actions: lever {l} listed more than once")
 

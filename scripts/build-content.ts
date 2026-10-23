@@ -324,7 +324,23 @@ for (const file of RECORD_FILES) {
   records[file] = ok;
 }
 for (const f of manifest?.extensions.record_files ?? []) if (!fs.existsSync(path.join(PACK, f))) E('manifest/extensions/record_files', `${f} missing`);
-const recordCheck = checkRecords(records, { refNs, ledgerIds, situationTags });
+/**
+ * The status vocabularies, read from the file headers as they stand (ported from Key Personnel at K10.3: a status
+ * renders with the header's meaning). states.yaml: "status vocabulary — overlay: a | b | c; …"; changes.yaml (and every
+ * pending_changes list): "status: a | b | c". When a header carries no list, the schema's own lists apply.
+ */
+function headerVocabularies(statesHeader: string, changesHeader: string): { overlays: Record<string, string[]>; changes: string[] } {
+  const flat = statesHeader.replace(/\n/g, ' ').replace(/\s+/g, ' ');
+  const overlays: Record<string, string[]> = {};
+  for (const o of OVERLAYS) {
+    const m = new RegExp(`${o}: ([a-z0-9| -]+?)[;.]`).exec(flat);
+    if (m) overlays[o] = m[1].split('|').map((x) => x.trim()).filter(Boolean);
+  }
+  const cm = /status:\s*([a-z0-9| -]+)/.exec(changesHeader);
+  return { overlays, changes: cm ? cm[1].split('|').map((x) => x.trim()).filter(Boolean) : [] };
+}
+const vocab = headerVocabularies(yamlHeader('states.yaml'), yamlHeader('changes.yaml'));
+const recordCheck = checkRecords(records, { refNs, ledgerIds, situationTags, overlayStatuses: vocab.overlays, changeStatuses: vocab.changes });
 errors.push(...recordCheck.errors);
 warnings.push(...recordCheck.warnings);
 for (const [n, keysList] of recordCheck.citedBy) for (const k of keysList) markCited(n, k);

@@ -3,7 +3,7 @@ import { loadHr, loadLevers, useAsync } from '@/lib/heavy';
 import { recordMeta } from '@/lib/records';
 import { AsOf, BlockLabel, Field, LegacyLine, RecordHeader, RecordLinks, Sources, StageChip, SynProse, synId } from '@/components/records/Bits';
 import { EvidenceBlock, useMapData } from '@/components/records/RecordParts';
-import { AddButton } from '@/components/plan/Cards';
+import { AddButton, MomentChip } from '@/components/plan/Cards';
 import { QA } from '@/components/notebook/QuoteControl';
 import { actionRow } from '@/lib/rows';
 import { EDITION_URL } from '@/lib/data';
@@ -29,7 +29,7 @@ export default function LeverPage() {
     <article className="mx-auto max-w-[56rem] px-4 lg:px-8 py-10" data-testid="lever-page">
       <QA route={`/plan/actions/${l.id}`} type="levers" id={l.id} title={plainName || l.name} asOf={l.as_of} cites={l.sources}>
         <RecordHeader title={l.name} plainName={plainName} eyebrow="Action">
-          {l.stages.map((s) => <StageChip key={s} stage={s} />)}<AsOf date={l.as_of} />
+          <MomentChip moment={hr?.actions.byLever[l.id]?.moment} also={hr?.actions.byLever[l.id]?.also} />{l.stages.map((s) => <StageChip key={s} stage={s} />)}<AsOf date={l.as_of} />
         </RecordHeader>
         <div className="mt-4 flex flex-wrap items-center gap-4 no-print">
           <AddButton kind="action" refId={l.id} build={() => actionRow(l.id)} label={S.addToPlan} />

@@ -23,6 +23,7 @@ test('Start → Plan for "Few plausible candidates", Fill a role, clearance + ra
   const adjacent = await lever.getByTestId('evidence-block').evaluate((el) => el.nextElementSibling?.getAttribute('data-testid'));
   expect(adjacent).toBe('limits-line');
   await expect(lever.getByTestId('grade-chip')).toBeVisible();
+  await expect(lever.getByTestId('moment-chip')).toHaveText(/^Moment: (Planning|Posting and finding people|Interviewing and testing|The offer|Clearance and start|The first weeks|Growing people|Keeping people|Departures and handovers)/);
 
   // Rules: Alabama with six state rules and the E-Verify gate
   const rules = page.getByTestId('plan-rules');
